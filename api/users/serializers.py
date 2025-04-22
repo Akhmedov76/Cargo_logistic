@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'role', 'phone_number', 'email', 'company', 'created_at', 'updated_at']
+        fields = ['id', 'username', 'role', 'phone_number', 'email', 'created_at', 'updated_at']
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
@@ -18,11 +18,10 @@ class UserCreateSerializer(serializers.ModelSerializer):
     role = serializers.ChoiceField(choices=User.ROLE_CHOICES, required=True)
     phone_number = serializers.CharField(required=True, help_text="e.g. +998901234567")
     email = serializers.EmailField(required=True)
-    company = serializers.CharField(allow_blank=True)
 
     class Meta:
         model = User
-        fields = ['username', 'password', 'role', 'phone_number', 'email', 'company']
+        fields = ['username', 'password', 'role', 'phone_number', 'email', ]
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)
@@ -34,30 +33,41 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
 
 class RegisterSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(max_length=15, help_text="User's unique username")
-    password = serializers.CharField(write_only=True)
     email = serializers.EmailField(required=True)
+    password = serializers.CharField(write_only=True, min_length=8,
+                                     help_text=_("Password must be at least 8 characters long."))
     phone_number = serializers.CharField(required=True, help_text="e.g. +998901234567")
-    role = serializers.ChoiceField(choices=User.ROLE_CHOICES, required=True)
-    company = serializers.CharField(allow_blank=True)
 
     class Meta:
         model = User
-        fields = ['username', 'password', 'email', 'phone_number', 'role', 'company']
+        fields = ['email', 'password', 'phone_number']
 
     def validate_email(self, value):
         if User.objects.filter(email=value).exists():
             raise serializers.ValidationError(_("Email is already registered."))
         return value
 
+    def validate_phone_number(self, value):
+        if User.objects.filter(phone_number=value).exists():
+            raise serializers.ValidationError(_("Phone number is already registered."))
+        return value
+
+    def create(self, validated_data):
+        password = validated_data.pop('password', None)
+        user = User(**validated_data)
+        if password:
+            user.set_password(password)
+        user.save()
+        return user
+
 
 class LoginSerializer(serializers.Serializer):
-    username = serializers.CharField(max_length=15)
+    email = serializers.CharField(max_length=25)
     password = serializers.CharField()
 
     def validate(self, attrs):
-        username = attrs.get('username')
-        if not User.objects.filter(username=username).exists():
+        email = attrs.get('email')
+        if not User.objects.filter(username=email).exists():
             raise serializers.ValidationError(
                 {'message': _('User matching query does not exist')}
             )

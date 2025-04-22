@@ -139,39 +139,35 @@ AUTH_USER_MODEL = 'users.User'
 
 # rest-framework configuration
 REST_FRAMEWORK = {
-    'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
+    'DATETIME_FORMAT': "%d-%m-%Y %H:%M:%S",
     'DEFAULT_PERMISSION_CLASSES': [
         "rest_framework.permissions.DjangoModelPermissions",
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.SessionAuthentication']
-    # ],
-    # 'DEFAULT_RENDERER_CLASSES': (
-    #     'rest_framework.renderers.JSONRenderer',
-    #     'rest_framework.renderers.BrowsableAPIRenderer',
-    #     'drf_excel.renderers.XLSXRenderer',
-    # ),
-    # 'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    # 'DEFAULT_FILTER_BACKENDS': [
-    #     'django_filters.rest_framework.DjangoFilterBackend',
-    #     'rest_framework.filters.SearchFilter',
-    #     'rest_framework.filters.OrderingFilter',
-    # ],
-    # 'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
-    # 'DEFAULT_THROTTLE_RATES': {
-    #     "authentication": "100/hour",
-    #     "verify_authentication": "100/hour",
-    #     "create_two_step_password_authentication": "100/hour",
-    #     "verify_two_step_password_authentication": "100/hour",
-    # },
-    # "DATE_INPUT_FORMATS": ["%d-%m-%Y", "%Y-%m-%d"],
-    # 'DATETIME_FORMAT': '%d-%m-%Y %H:%M:%S',
-    # 'DATE_FORMAT': '%d-%m-%Y',
-    # 'NON_FIELD_ERRORS_KEY': 'message',
-    # 'EXCEPTION_HANDLER': 'api.core.exceptions.custom_exception_handler',
-    # 'DEFAULT_PAGINATION_CLASS': 'api.core.pagination.PageNumberPagination',
-    # 'PAGE_SIZE': 15,
+        'rest_framework.authentication.SessionAuthentication'
+    ],
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter',
+    ],
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
+    'DEFAULT_THROTTLE_RATES': {
+        "authentication": "100/hour",
+        "verify_authentication": "100/hour",
+        "create_two_step_password_authentication": "100/hour",
+        "verify_two_step_password_authentication": "100/hour",
+    },
+    "DATE_INPUT_FORMATS": ["%d-%m-%Y", "%Y-%m-%d"],
+    'DATETIME_FORMAT': '%d-%m-%Y %H:%M:%S',
+    'DATE_FORMAT': '%d-%m-%Y',
+    'NON_FIELD_ERRORS_KEY': 'message',
+
 }
 
 # Swagger settings
