@@ -5,19 +5,19 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 
-from api.order.models import DeliveryRequest, DeliveryForDrivers
+from api.order.models import AddCargo, DeliveryForDrivers
 from api.order.serializers import OrderSerializer, OrderCreateSerializer
 
 
 class DeliveryRequestView(ModelViewSet):
-    queryset = DeliveryRequest.objects.all()
+    queryset = AddCargo.objects.all()
     serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated]
 
     @swagger_auto_schema(query_serializer=OrderSerializer)
     @action(detail=False, methods=['get'], url_path='get-order')
     def get_order(self, request):
-        order = DeliveryRequest.objects.filter(role=request.user.role)
+        order = AddCargo.objects.filter(role=request.user.role)
         serializer = OrderSerializer(order, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

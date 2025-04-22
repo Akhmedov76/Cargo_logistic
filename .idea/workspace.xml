@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update views for user model">
+    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update views for user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/cargo_base/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/cargo_base/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/cargo_base/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/cargo_base/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +90,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1745284231146</updated>
-      <workItem from="1745284232215" duration="26364000" />
+      <workItem from="1745284232215" duration="28198000" />
     </task>
     <task id="LOCAL-00001" summary="create">
       <option name="closed" value="true" />
@@ -384,7 +388,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745322711868</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="add token refresh">
+      <option name="closed" value="true" />
+      <created>1745323899033</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1745323899033</updated>
+    </task>
+    <task id="LOCAL-00039" summary="update views for user">
+      <option name="closed" value="true" />
+      <created>1745323931199</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1745323931199</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,6 +433,8 @@
     <MESSAGE value="update" />
     <MESSAGE value="update login serializers.py" />
     <MESSAGE value="update views for user model" />
-    <option name="LAST_COMMIT_MESSAGE" value="update views for user model" />
+    <MESSAGE value="add token refresh" />
+    <MESSAGE value="update views for user" />
+    <option name="LAST_COMMIT_MESSAGE" value="update views for user" />
   </component>
 </project>

@@ -3,13 +3,13 @@ from random import choices
 from rest_framework import serializers
 
 from api.country.models import District
-from api.order.models import DeliveryRequest, DeliveryForDrivers
+from api.order.models import AddCargo, DeliveryForDrivers
 from api.users.models import User
 
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
-        model = DeliveryRequest
+        model = AddCargo
         fields = [
             'id',
             'cargo',
@@ -22,7 +22,7 @@ class OrderSerializer(serializers.ModelSerializer):
             'role', ]
 
     def create(self, validated_data):
-        return DeliveryRequest.objects.create(**validated_data)
+        return AddCargo.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
         for attr, value in validated_data.items():

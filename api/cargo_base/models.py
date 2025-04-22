@@ -3,7 +3,7 @@ from django.db import models
 from api.base.mixins import TimeModelMixin
 
 
-class CargoElements(TimeModelMixin, models.Model):
+class CargoType(TimeModelMixin, models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     descriptions = models.TextField()
 

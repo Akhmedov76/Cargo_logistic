@@ -1,10 +1,10 @@
 from django.contrib import admin
-from api.order.models import DeliveryRequest, DeliveryForDrivers
+from api.order.models import AddCargo, DeliveryForDrivers
 
 
-@admin.register(DeliveryRequest)
+@admin.register(AddCargo)
 class DeliveryRequestAdmin(admin.ModelAdmin):
-    list_display = ('id', 'cargo', 'weight', 'capacity', 'when', 'loading', 'download', 'services', 'role')
+    list_display = ('id', 'cargo', 'weight', 'volume', 'when', 'loading', 'download', 'services', 'role')
     list_filter = ('role', 'cargo')
 
 

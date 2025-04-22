@@ -1,6 +1,6 @@
 from django.contrib import admin
-from api.cargo_base.models import CargoElements
+from api.cargo_base.models import CargoType
 
-admin.site.register(CargoElements)
+admin.site.register(CargoType)
 
 

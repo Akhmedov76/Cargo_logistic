@@ -2,27 +2,27 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from api.base.mixins import TimeModelMixin
-from api.cargo_base.models import CargoElements
+from api.cargo_base.models import CargoType
 from api.country.models import District
 from api.services.models import ServicesModel
 from api.users.models import User
 
 
-class DeliveryRequest(TimeModelMixin, models.Model):
+class AddCargo(TimeModelMixin, models.Model):
     when_loading = [
-        ('ready to load', 'Ready to load'),
+        ('ready_to_download', 'Ready to download'),
         ('permanent', 'Permanent'),
-        ('no load', 'No load')
+        ('no_load', 'No load')
     ]
-    cargo = models.ForeignKey(CargoElements, on_delete=models.CASCADE, blank=True, null=True)
+    cargo = models.ForeignKey(CargoType, on_delete=models.CASCADE, blank=True, null=True)
     weight = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
-    capacity = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
 
     when = models.CharField(max_length=255, blank=True, choices=when_loading)
     loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
-                                related_name='deliveryrequest_loading')
-    download = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
-                                 related_name='deliveryrequest_download')
+                                related_name='loading')
+    unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
+                                  related_name='unloading')
     services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, blank=True, null=True)
     role = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
