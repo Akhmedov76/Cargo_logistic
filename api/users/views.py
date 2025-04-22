@@ -45,7 +45,7 @@ class LoginView(APIView):
         password = serializer.validated_data.get("password")
 
         try:
-            user = User.objects.get(email=email)
+            user = get_user_model().objects.get(email=email)
         except User.DoesNotExist:
             return Response({"error": _("User does not exist")}, status=status.HTTP_404_NOT_FOUND)
 
