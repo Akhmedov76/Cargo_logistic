@@ -40,11 +40,10 @@ class LoginView(APIView):
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = authenticate(
-            email=serializer.validated_data['email'],
-            password=serializer.validated_data['password']
-        )
-        if user:
+        email = serializer.validated_data.get("email")
+        password = serializer.validated_data.get("password")
+        user = authenticate(request, email=email, password=password)
+        if get_user_model().objects.filter(email=serializer.validated_data['email']).exists():
             login(request, user)
             return Response({"message": _("Login successful!")}, status=status.HTTP_200_OK)
         return Response({"error": _("Invalid email or password")}, status=status.HTTP_401_UNAUTHORIZED)
