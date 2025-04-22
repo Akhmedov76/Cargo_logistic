@@ -2,7 +2,9 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from api.base.mixins import TimeModelMixin
+from api.cargo_base.models import CargoElements
 from api.country.models import District
+from api.services.models import ServicesModel
 from api.users.models import User
 
 
@@ -12,7 +14,7 @@ class DeliveryRequest(TimeModelMixin, models.Model):
         ('permanent', 'Permanent'),
         ('no load', 'No load')
     ]
-    cargo = models.ForeignKey('CargoElements', on_delete=models.CASCADE, blank=True, null=True)
+    cargo = models.ForeignKey(CargoElements, on_delete=models.CASCADE, blank=True, null=True)
     weight = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
     capacity = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
 
@@ -21,7 +23,7 @@ class DeliveryRequest(TimeModelMixin, models.Model):
                                 related_name='deliveryrequest_loading')
     download = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
                                  related_name='deliveryrequest_download')
-    services = models.ForeignKey('ServicesModel', on_delete=models.CASCADE, blank=True, null=True)
+    services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, blank=True, null=True)
     role = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     class Meta:
