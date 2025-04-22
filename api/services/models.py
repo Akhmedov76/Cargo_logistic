@@ -10,8 +10,9 @@ class ServicesModel(TimeModelMixin, models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.name}  ({self.descriptions})"
+        return f"{self.name or 'No Name'} ({self.descriptions or 'No Description'})"
 
     class Meta:
-        verbose_name = 'Service'
-        verbose_name_plural = 'Services'
+        verbose_name = _('Service')
+        verbose_name_plural = _('Services')
+        ordering = ['name']
