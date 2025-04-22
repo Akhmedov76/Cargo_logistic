@@ -30,7 +30,7 @@ class RegisterView(APIView):
 
         serializer.save()
 
-        return Response({"message": _("Registration successful")}, status=status.HTTP_201_CREATED)
+        return Response({"message": _("Registration successful!")}, status=status.HTTP_201_CREATED)
 
 
 class LoginView(APIView):
