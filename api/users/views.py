@@ -19,16 +19,18 @@ class RegisterView(APIView):
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        email = serializer.data.get("email")
-        password = serializer.data.get("password")
+        email = serializer.validated_data.get("email")
+        password = serializer.validated_data.get("password")
 
-        if get_user_model().objects.filter(email=email,
-                                           password=password).exists():
+        if get_user_model().objects.filter(email=email).exists():
             return Response(
-                {"message": _("User exists with this email number. Please enter a other email address.")},
-                status=status.HTTP_401_UNAUTHORIZED,
+                {"message": _("User exists with this email. Please enter another email address.")},
+                status=status.HTTP_400_BAD_REQUEST,
             )
-        return Response({"message": "Registration successful"}, status=status.HTTP_201_CREATED)
+
+        serializer.save()
+
+        return Response({"message": _("Registration successful")}, status=status.HTTP_201_CREATED)
 
 
 class LoginView(APIView):
