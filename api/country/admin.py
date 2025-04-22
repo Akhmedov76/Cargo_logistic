@@ -1,3 +1,6 @@
 from django.contrib import admin
+from api.country.models import Region, District, Country
 
-# Register your models here.
+admin.site.register(Region)
+admin.site.register(District)
+admin.site.register(Country)

@@ -1,3 +1,5 @@
 from django.contrib import admin
+from api.order.models import DeliveryRequest, DeliveryForDrivers
 
-# Register your models here.
+admin.site.register(DeliveryRequest)
+admin.site.register(DeliveryForDrivers)

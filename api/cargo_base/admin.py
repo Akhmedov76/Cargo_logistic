@@ -1,3 +1,6 @@
 from django.contrib import admin
+from api.cargo_base.models import CargoElements
 
-# Register your models here.
+admin.site.register(CargoElements)
+
+
