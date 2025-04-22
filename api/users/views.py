@@ -39,16 +39,15 @@ class LoginView(APIView):
     @swagger_auto_schema(request_body=LoginSerializer)
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
-        if serializer.is_valid():
-            user = authenticate(
-                email=serializer.validated_data['email'],
-                password=serializer.validated_data['password']
-            )
-            if user:
-                login(request, user)
-                return Response({"message": "Login successful"}, status=status.HTTP_200_OK)
-            return Response({"error": "Invalid username or password"}, status=status.HTTP_401_UNAUTHORIZED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
+        user = authenticate(
+            email=serializer.validated_data['email'],
+            password=serializer.validated_data['password']
+        )
+        if user:
+            login(request, user)
+            return Response({"message": _("Login successful!")}, status=status.HTTP_200_OK)
+        return Response({"error": _("Invalid email or password")}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 class UserListCreateView(ModelViewSet):
