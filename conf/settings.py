@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'DB_NAME': 'cargologistic',
-        'DB_USER': 'postgres',
-        'DB_PASSWORD': '7686',
-        'DB_HOST': 'localhost',
-        'DB_PORT': '5432',
+        'NAME': 'cargologistic',
+        'USER': 'postgres',
+        'PASSWORD': '7686',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -140,7 +140,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Use custom user model
-AUTH_USER_MODEL = 'api.users.User'
+AUTH_USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
