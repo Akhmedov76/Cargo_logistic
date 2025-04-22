@@ -1,3 +1,7 @@
+from drf_yasg.utils import swagger_auto_schema
+from rest_framework import status
+from rest_framework.decorators import action
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 
@@ -10,26 +14,9 @@ class DeliveryOrderView(ModelViewSet):
     serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated]
 
-    def perform_create(self, serializer):
-        serializer.save(role=self.request.user)
-
-    def get_queryset(self):
-        user = self.request.user
-        if user.role == 'customer':
-            return self.queryset.filter(role=user)
-        return self.queryset
-
-
-class OrderCreateView(ModelViewSet):
-    queryset = DeliveryForDrivers.objects.all()
-    serializer_class = OrderCreateSerializer
-    permission_classes = [IsAuthenticated]
-
-    def perform_create(self, serializer):
-        serializer.save(role=self.request.user)
-
-    def get_queryset(self):
-        user = self.request.user
-        if user.role == 'customer':
-            return self.queryset.filter(role=user)
-        return self.queryset
+    @swagger_auto_schema(query_serializer=OrderSerializer)
+    @action(detail=False, methods=['get'], url_path='get-order')
+    def get_order(self, request):
+        order = DeliveryRequest.objects.filter(role=request.user.role)
+        serializer = OrderSerializer(order, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
