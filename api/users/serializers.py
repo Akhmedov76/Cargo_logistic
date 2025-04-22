@@ -62,12 +62,13 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 class LoginSerializer(serializers.Serializer):
-    email = serializers.CharField(max_length=25)
-    password = serializers.CharField()
+    email = serializers.EmailField(
+        max_length=255)
+    password = serializers.CharField(write_only=True)
 
     def validate(self, attrs):
         email = attrs.get('email')
-        if not User.objects.filter(username=email).exists():
+        if not User.objects.filter(email=email).exists():
             raise serializers.ValidationError(
                 {'message': _('User matching query does not exist')}
             )
