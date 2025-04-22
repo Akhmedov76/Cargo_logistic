@@ -1,4 +1,5 @@
 from django.contrib.admin import action
+from django.utils import timezone
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
@@ -42,10 +43,19 @@ class LoginView(APIView):
         serializer.is_valid(raise_exception=True)
         email = serializer.validated_data.get("email")
         password = serializer.validated_data.get("password")
-        user = authenticate(request, email=email, password=password)
-        if get_user_model().objects.filter(email=serializer.validated_data['email']).exists():
+
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return Response({"error": _("User does not exist")}, status=status.HTTP_404_NOT_FOUND)
+
+        if user.check_password(password) and user.is_active:
+            user.last_login = timezone.now()
+            user.save(update_fields=['last_login'])
+
             login(request, user)
             return Response({"message": _("Login successful!")}, status=status.HTTP_200_OK)
+
         return Response({"error": _("Invalid email or password")}, status=status.HTTP_401_UNAUTHORIZED)
 
 

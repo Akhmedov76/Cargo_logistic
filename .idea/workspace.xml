@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update">
+    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update views for user model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/views.py" afterDir="false" />
     </list>
@@ -85,7 +85,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1745284231146</updated>
-      <workItem from="1745284232215" duration="22536000" />
+      <workItem from="1745284232215" duration="24969000" />
     </task>
     <task id="LOCAL-00001" summary="create">
       <option name="closed" value="true" />
@@ -343,7 +343,31 @@
       <option name="project" value="LOCAL" />
       <updated>1745319950548</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="update">
+      <option name="closed" value="true" />
+      <created>1745320007171</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1745320007171</updated>
+    </task>
+    <task id="LOCAL-00034" summary="update login serializers.py">
+      <option name="closed" value="true" />
+      <created>1745320811600</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1745320811600</updated>
+    </task>
+    <task id="LOCAL-00035" summary="update views for user model">
+      <option name="closed" value="true" />
+      <created>1745320852989</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1745320852989</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,8 +392,10 @@
     <MESSAGE value="update serializers.py" />
     <MESSAGE value="create order view" />
     <MESSAGE value="update register view for user" />
-    <MESSAGE value="update" />
     <MESSAGE value="add translate" />
-    <option name="LAST_COMMIT_MESSAGE" value="add translate" />
+    <MESSAGE value="update" />
+    <MESSAGE value="update login serializers.py" />
+    <MESSAGE value="update views for user model" />
+    <option name="LAST_COMMIT_MESSAGE" value="update views for user model" />
   </component>
 </project>
