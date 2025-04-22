@@ -8,7 +8,7 @@ router.register(r'users', UserListCreateView, basename='users')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('v1/register/', RegisterView.as_view(), name='register'),
-    path('v1/login/', LoginView.as_view(), name='login')
+    path('auth/register/', RegisterView.as_view(), name='register'),
+    path('auth/login/', LoginView.as_view(), name='login')
 
 ]
