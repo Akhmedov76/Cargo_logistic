@@ -20,3 +20,12 @@ class UserListCreateView(ModelViewSet):
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @swagger_auto_schema(query_serializer=UserCreateSerializer)
+    @action(detail=False, methods=['post'], url_path='create-user')
+    def create_user(self, request):
+        serializer = UserCreateSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

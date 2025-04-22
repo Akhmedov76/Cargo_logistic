@@ -4,12 +4,21 @@ from api.users.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(read_only=True)
+
     class Meta:
         model = User
         fields = ['id', 'username', 'role', 'phone_number', 'email', 'company', 'created_at', 'updated_at']
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
+    username = serializers.CharField()
+    password = serializers.CharField(write_only=True)
+    role = serializers.ChoiceField(choices=User.ROLE_CHOICES, required=True)
+    phone_number = serializers.CharField(required=True, help_text="e.g. +998901234567")
+    email = serializers.EmailField(required=True)
+    company = serializers.CharField(allow_blank=True)
+
     class Meta:
         model = User
         fields = ['username', 'password', 'role', 'phone_number', 'email', 'company']
