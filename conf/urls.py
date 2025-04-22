@@ -7,6 +7,7 @@ from rest_framework import permissions
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.users.urls')),
+    path('api/', include('api.order.urls')),
 ]
 
 # Swagger
