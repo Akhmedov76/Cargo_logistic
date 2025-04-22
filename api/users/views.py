@@ -62,10 +62,14 @@ class LoginView(APIView):
 class UserListCreateView(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserCreateSerializer
+    permission_classes = [AllowAny]
 
     @swagger_auto_schema(query_serializer=UserSerializer)
     @action(detail=False, methods=['get'], url_path='get-users')
     def get_users(self, request):
-        users = User.objects.all()
+        if request.user.is_staff:
+            users = User.objects.all()
+        else:
+            users = User.objects.filter(id=request.user.id)
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
