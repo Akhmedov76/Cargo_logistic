@@ -34,7 +34,7 @@ class AddCargo(TimeModelMixin, models.Model):
     unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
                                   related_name='unloading')
     services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, blank=True, null=True)
-    role = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='role')
+    role = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='cargo_roles')
     GPS_monitoring = models.BooleanField(default=False)
     contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='contact')
 
@@ -42,8 +42,8 @@ class AddCargo(TimeModelMixin, models.Model):
     bid_price = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
 
     class Meta:
-        verbose_name = 'Delivery'
-        verbose_name_plural = 'Deliveries'
+        verbose_name = _('Cargo')
+        verbose_name_plural = _('Cargo')
 
     def bid_in_uzs(self):
         if self.bid_currency == 'SUM':
@@ -62,20 +62,20 @@ class DeliveryForDrivers(TimeModelMixin, models.Model):
         ('from behind', 'From behind'),
         ('with full awning', 'With full awning'),
         ('with the removal of crossbars', 'With the removal of crossbars'),
-        ('electricity', 'electricity')
+        ('electricity', 'Electricity')
     ]
     role = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     loading = models.CharField(choices=Loading_choice, max_length=255, blank=True, null=True)
     vehicle = models.CharField(_('Vehicle'), max_length=55, blank=True, null=True)
-    body_volume = models.DecimalField(_('Volume'), max_digits=12, decimal_places=2, null=True, blank=True)
+    body_volume = models.DecimalField(_('Volume (m³)'), max_digits=12, decimal_places=2, null=True, blank=True)
     where = models.ForeignKey(District, on_delete=models.CASCADE, null=True)
     where_to = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
                                  related_name='delivery_where_to')
-    company = models.CharField(_('company'), max_length=55, blank=True, null=True)
+    company = models.CharField(_('Company'), max_length=55, blank=True, null=True)
 
     def __str__(self):
-        return self.loading if self.loading else "No loading choice"
+        return f"{self.company} - {self.vehicle}" if self.company and self.vehicle else "No company or vehicle"
 
     class Meta:
-        verbose_name = 'Driver'
-        verbose_name_plural = 'Drivers'
+        verbose_name = _('Driver')
+        verbose_name_plural = _('Drivers')
