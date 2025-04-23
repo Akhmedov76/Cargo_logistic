@@ -4,11 +4,20 @@ from api.order.models import AddCargo, DeliveryForDrivers
 
 @admin.register(AddCargo)
 class DeliveryRequestAdmin(admin.ModelAdmin):
-    list_display = ('id', 'cargo', 'weight', 'volume', 'when', 'loading', 'download', 'services', 'role')
-    list_filter = ('role', 'cargo')
+    list_display = (
+        'id', 'cargo', 'weight', 'volume', 'when', 'loading', 'unloading', 'services', 'role', 'GPS_monitoring',
+        'contact', 'bid_currency', 'bid_price', 'created_at', 'updated_at')
+    list_filter = ('role', 'cargo', 'when', 'loading', 'unloading', 'bid_currency')
+    search_fields = ('cargo__name', 'loading__name', 'unloading__name', 'role__username', 'contact__username')
+    ordering = ('-created_at',)
+    readonly_fields = ('created_at', 'updated_at')
 
 
 @admin.register(DeliveryForDrivers)
 class DeliveryForDriversAdmin(admin.ModelAdmin):
-    list_display = ('id', 'role', 'loading', 'vehicle', 'body_volume', 'where', 'where_to', 'company')
-    list_filter = ('role', 'company', 'loading', 'vehicle',)
+    list_display = (
+        'id', 'role', 'loading', 'vehicle', 'body_volume', 'where', 'where_to', 'company', 'created_at', 'updated_at')
+    list_filter = ('role', 'company', 'loading', 'vehicle', 'where', 'where_to')
+    search_fields = ('role__username', 'vehicle', 'company', 'where__name', 'where_to__name')
+    ordering = ('-created_at',)
+    readonly_fields = ('created_at', 'updated_at')
