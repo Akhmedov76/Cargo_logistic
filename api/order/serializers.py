@@ -22,9 +22,8 @@ class OrderCargoSerializer(serializers.ModelSerializer):
             'loading',
             'unloading',
             'services',
-            'role',
-            'GPS_monitoring',
             'contact',
+            'GPS_monitoring',
             'bid_currency',
             'bid_price',
             'price_in_UZS', ]
@@ -48,7 +47,7 @@ class OrderCargoSerializer(serializers.ModelSerializer):
 
 
 class OrderCarrierSerializer(serializers.ModelSerializer):
-    role = serializers.ChoiceField(choices=User.ROLE_CHOICES, required=False)
+    contact = serializers.ChoiceField(choices=User.ROLE_CHOICES, required=False)
     loading = serializers.ChoiceField(choices=DeliveryForDrivers.Loading_choice, required=False)
     vehicle = serializers.CharField(max_length=55, required=False, allow_blank=True)
     body_volume = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
@@ -59,7 +58,7 @@ class OrderCarrierSerializer(serializers.ModelSerializer):
     class Meta:
         model = DeliveryForDrivers
         fields = [
-            'role',
+            'contact',
             'loading',
             'vehicle',
             'body_volume',

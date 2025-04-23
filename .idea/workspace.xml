@@ -6,9 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/cargo_base/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/country/migrations/0001_initial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0002_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0003_addcargo_currency_exchange_to_sum_addcargo_uzs_price_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0004_remove_addcargo_uzs_price.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0005_rename_currency_exchange_to_sum_addcargo_price_in_uzs_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0006_addcargo_height_addcargo_length_addcargo_width_and_more.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/services/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/users/migrations/0001_initial.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,15 +101,7 @@
       <workItem from="1745284232215" duration="32592000" />
       <workItem from="1745381618536" duration="1108000" />
       <workItem from="1745386925056" duration="315000" />
-      <workItem from="1745387248740" duration="9746000" />
-    </task>
-    <task id="LOCAL-00001" summary="create">
-      <option name="closed" value="true" />
-      <created>1745284297991</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1745284297991</updated>
+      <workItem from="1745387248740" duration="11600000" />
     </task>
     <task id="LOCAL-00002" summary="create gitignore">
       <option name="closed" value="true" />
@@ -485,7 +487,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745413930741</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="update">
+      <option name="closed" value="true" />
+      <created>1745415078824</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1745415078824</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

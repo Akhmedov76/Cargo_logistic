@@ -26,7 +26,7 @@ CURRENCY_CHOICES = [
 
 class AddCargo(TimeModelMixin, models.Model):
     cargo = models.ForeignKey(CargoType, on_delete=models.CASCADE, null=True, blank=True)
-    weight = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='kg')
+    weight = models.DecimalField(max_digits=12, decimal_places=2, help_text='kg')
     length = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
     width = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
     height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
@@ -36,10 +36,9 @@ class AddCargo(TimeModelMixin, models.Model):
                                 related_name='loading')
     unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
                                   related_name='unloading')
-    services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, blank=True, null=True)
-    role = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='cargo_roles')
+    services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, )
+    contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='cargo_roles')
     GPS_monitoring = models.BooleanField(default=False)
-    contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='contact')
 
     bid_currency = models.CharField(max_length=10, choices=CURRENCY_CHOICES, default='SUM')
     bid_price = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
@@ -56,11 +55,11 @@ class AddCargo(TimeModelMixin, models.Model):
             self.volume = None
 
         if self.bid_currency == 'SUM':
-            self.currency_exchange_to_sum = self.bid_price
+            self.price_in_UZS = self.bid_price
         else:
             rate = get_currency_rate(self.bid_currency)
             if rate and self.bid_price:
-                self.currency_exchange_to_sum = float(self.bid_price) * rate
+                self.price_in_UZS = float(self.bid_price) * rate
         super().save(*args, **kwargs)
 
 
@@ -73,14 +72,23 @@ class DeliveryForDrivers(TimeModelMixin, models.Model):
         ('with the removal of crossbars', 'With the removal of crossbars'),
     ]
     loading = models.CharField(choices=Loading_choice, max_length=255, blank=True, null=True)
-    load_capacity = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='kg')
+    weight = models.DecimalField(max_digits=12, decimal_places=2, help_text='kg')
+    length = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
+    width = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
+    height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
     volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
-    role = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    GPS_monitoring = models.BooleanField(default=False)
+    when = models.CharField(max_length=30, blank=True, choices=when_loading)
+    where = models.ForeignKey(District, on_delete=models.CASCADE, )
+    where_to = models.ForeignKey(District, on_delete=models.CASCADE, related_name='delivery_where_to')
+
+    bid_currency = models.CharField(max_length=10, choices=CURRENCY_CHOICES, default='SUM')
+    bid_price = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    price_in_UZS = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+
+    contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     vehicle = models.CharField(_('Vehicle'), max_length=55, blank=True, null=True)
     body_volume = models.DecimalField(_('Volume (m³)'), max_digits=12, decimal_places=2, null=True, blank=True)
-    where = models.ForeignKey(District, on_delete=models.CASCADE, null=True)
-    where_to = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
-                                 related_name='delivery_where_to')
     company = models.CharField(_('Company'), max_length=55, blank=True, null=True)
 
     def __str__(self):
