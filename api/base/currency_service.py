@@ -10,7 +10,7 @@ def get_currency_rate(code):
         response = requests.get(f"{CBU_API_URL}{code}/{today}/")
         response.raise_for_status()
         data = response.json()
-        if data:
+        if data and 'Rate' in data[0]:
             return float(data[0]['Rate'].replace(',', '.'))
     except Exception as e:
         print(f"Currency API error: {e}")
