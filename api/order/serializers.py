@@ -17,12 +17,14 @@ class OrderCargoSerializer(serializers.ModelSerializer):
             'volume',
             'when',
             'loading',
+            'unloading',
             'services',
             'role',
             'GPS_monitoring',
             'contact',
             'bid_currency',
-            'bid_price', ]
+            'bid_price',
+            'price_in_UZS', ]
 
     def create(self, validated_data):
         return AddCargo.objects.create(**validated_data)

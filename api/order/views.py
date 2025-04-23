@@ -9,31 +9,36 @@ from api.order.models import AddCargo, DeliveryForDrivers
 from api.order.serializers import OrderCargoSerializer, OrderCarrierSerializer
 
 
-class DeliveryRequestView(ModelViewSet):
+class CargoRequestView(ModelViewSet):
     queryset = AddCargo.objects.all()
     serializer_class = OrderCargoSerializer
     permission_classes = [IsAuthenticated]
 
-    @swagger_auto_schema(query_serializer=OrderCargoSerializer)
+    @swagger_auto_schema(query_serializer=None)
     @action(detail=False, methods=['get'], url_path='get-cargo-owner')
     def get_order(self, request):
-        order = AddCargo.objects.filter(role=request.user.role)
+        order = AddCargo.objects.filter(role=request.user)
         serializer = OrderCargoSerializer(order, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    @swagger_auto_schema(query_serializer=OrderCargoSerializer)
+    @swagger_auto_schema(request_body=OrderCargoSerializer)
     @action(detail=False, methods=['post'], url_path='create-cargo-owner')
     def create_order(self, request):
         serializer = OrderCargoSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(role=request.user)
             return Response({"message": "Order created successfully"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @swagger_auto_schema(query_serializer=OrderCargoSerializer)
+    @swagger_auto_schema(request_body=OrderCargoSerializer)
     @action(detail=False, methods=['put'], url_path='update-cargo-owner')
     def update_order(self, request):
-        serializer = OrderCargoSerializer(data=request.data)
+        try:
+            order = AddCargo.objects.get(id=request.data.get('id'), role=request.user)
+        except AddCargo.DoesNotExist:
+            return Response({"error": "Cargo not found or access denied"}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = OrderCargoSerializer(order, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response({"message": "Order updated successfully"}, status=status.HTTP_200_OK)

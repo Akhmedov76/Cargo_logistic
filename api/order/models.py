@@ -8,26 +8,29 @@ from api.country.models import District
 from api.services.models import ServicesModel
 from api.users.models import User
 
+when_loading = [
+    ('ready_to_download', 'Ready to download'),
+    ('permanent', 'Permanent'),
+    ('no_load', 'No load')
+]
+CURRENCY_CHOICES = [
+    ('USD', 'USD'),
+    ('EUR', 'EUR'),
+    ('RUB', 'RUB'),
+    ('GBP', 'GBP'),
+    ('CNY', 'CNY'),
+    ('KZT', 'KZT'),
+    ('SUM', 'UZS')
+]
+
 
 class AddCargo(TimeModelMixin, models.Model):
-    when_loading = [
-        ('ready_to_download', 'Ready to download'),
-        ('permanent', 'Permanent'),
-        ('no_load', 'No load')
-    ]
-    CURRENCY_CHOICES = [
-        ('USD', 'USD'),
-        ('EUR', 'EUR'),
-        ('RUB', 'RUB'),
-        ('GBP', 'GBP'),
-        ('CNY', 'CNY'),
-        ('KZT', 'KZT'),
-        ('SUM', 'UZS')
-    ]
-    cargo = models.ForeignKey(CargoType, on_delete=models.CASCADE, blank=True, null=True)
-    weight = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    cargo = models.ForeignKey(CargoType, on_delete=models.CASCADE, null=True, blank=True)
+    weight = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='kg')
+    length = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m')
+    width = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m')
+    height = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m')
     volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
-
     when = models.CharField(max_length=30, blank=True, choices=when_loading)
     loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
                                 related_name='loading')
@@ -40,32 +43,39 @@ class AddCargo(TimeModelMixin, models.Model):
 
     bid_currency = models.CharField(max_length=10, choices=CURRENCY_CHOICES, default='SUM')
     bid_price = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    price_in_UZS = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
 
     class Meta:
         verbose_name = _('Cargo')
         verbose_name_plural = _('Cargo')
 
-    def bid_in_uzs(self):
+    def save(self, *args, **kwargs):
+        if self.width and self.length and self.height:
+            self.volume = self.width * self.length * self.height
+        else:
+            self.volume = None
+
         if self.bid_currency == 'SUM':
-            return self.bid_price
-        rate = get_currency_rate(self.bid_currency)
-        print(rate)
-        if rate:
-            return self.bid_price * rate
-        return 0
+            self.price_in_UZS = self.bid_price
+        else:
+            rate = get_currency_rate(self.bid_currency)
+            if rate and self.bid_price:
+                self.price_in_UZS = float(self.bid_price) * rate
+        super().save(*args, **kwargs)
 
 
 class DeliveryForDrivers(TimeModelMixin, models.Model):
     Loading_choice = [
-        ('from above', 'From above'),
-        ('from the side', 'From the side'),
-        ('from behind', 'From behind'),
+        ('top', 'Top'),
+        ('lateral', 'Lateral'),
+        ('back', 'Back'),
         ('with full awning', 'With full awning'),
         ('with the removal of crossbars', 'With the removal of crossbars'),
-        ('electricity', 'Electricity')
     ]
-    role = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     loading = models.CharField(choices=Loading_choice, max_length=255, blank=True, null=True)
+    load_capacity = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='kg')
+    volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
+    role = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     vehicle = models.CharField(_('Vehicle'), max_length=55, blank=True, null=True)
     body_volume = models.DecimalField(_('Volume (m³)'), max_digits=12, decimal_places=2, null=True, blank=True)
     where = models.ForeignKey(District, on_delete=models.CASCADE, null=True)
