@@ -17,7 +17,10 @@ class CargoRequestView(ModelViewSet):
     @swagger_auto_schema(query_serializer=None)
     @action(detail=False, methods=['get'], url_path='get-cargo-owner')
     def get_order(self, request):
-        order = AddCargo.objects.filter(role=request.user)
+        if request.user.is_staff:
+            order = AddCargo.objects.all()
+        else:
+            order = AddCargo.objects.filter(contact=request.user)
         serializer = OrderCargoSerializer(order, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -34,7 +37,10 @@ class CargoRequestView(ModelViewSet):
     @action(detail=False, methods=['put'], url_path='update-cargo-owner')
     def update_order(self, request):
         try:
-            order = AddCargo.objects.get(id=request.data.get('id'), role=request.user)
+            if request.user.is_staff:
+                order = AddCargo.objects.get(id=request.data.get('id'))
+            else:
+                order = AddCargo.objects.get(id=request.data.get('id'), contact=request.user)
         except AddCargo.DoesNotExist:
             return Response({"error": "Cargo not found or access denied"}, status=status.HTTP_404_NOT_FOUND)
 

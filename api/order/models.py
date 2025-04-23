@@ -87,12 +87,9 @@ class DeliveryForDrivers(TimeModelMixin, models.Model):
     price_in_UZS = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
 
     contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    vehicle = models.CharField(_('Vehicle'), max_length=55, blank=True, null=True)
-    body_volume = models.DecimalField(_('Volume (m³)'), max_digits=12, decimal_places=2, null=True, blank=True)
-    company = models.CharField(_('Company'), max_length=55, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.company} - {self.vehicle}" if self.company and self.vehicle else "No company or vehicle"
+        return f"{self.contact} - {self.where} to {self.where_to}"
 
     class Meta:
         verbose_name = _('Driver')

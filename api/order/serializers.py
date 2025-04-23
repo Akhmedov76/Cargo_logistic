@@ -8,6 +8,12 @@ from api.users.models import User
 
 
 class OrderCargoSerializer(serializers.ModelSerializer):
+    cargo = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    services = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    loading = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    unloading = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    contact = serializers.SlugRelatedField(read_only=True, slug_field='email')
+
     class Meta:
         model = AddCargo
         fields = [
