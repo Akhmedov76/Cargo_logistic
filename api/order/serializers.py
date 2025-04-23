@@ -7,19 +7,22 @@ from api.order.models import AddCargo, DeliveryForDrivers
 from api.users.models import User
 
 
-class OrderSerializer(serializers.ModelSerializer):
+class OrderCargoSerializer(serializers.ModelSerializer):
     class Meta:
         model = AddCargo
         fields = [
             'id',
             'cargo',
             'weight',
-            'capacity',
+            'volume',
             'when',
             'loading',
-            'download',
             'services',
-            'role', ]
+            'role',
+            'GPS_monitoring',
+            'contact',
+            'bid_currency',
+            'bid_price', ]
 
     def create(self, validated_data):
         return AddCargo.objects.create(**validated_data)
@@ -31,7 +34,7 @@ class OrderSerializer(serializers.ModelSerializer):
         return instance
 
 
-class OrderCreateSerializer(serializers.ModelSerializer):
+class OrderCarrierSerializer(serializers.ModelSerializer):
     role = serializers.ChoiceField(choices=User.ROLE_CHOICES, required=False)
     loading = serializers.ChoiceField(choices=DeliveryForDrivers.Loading_choice, required=False)
     vehicle = serializers.CharField(max_length=55, required=False, allow_blank=True)
