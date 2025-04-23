@@ -14,6 +14,9 @@ class OrderCargoSerializer(serializers.ModelSerializer):
             'id',
             'cargo',
             'weight',
+            'length',
+            'width',
+            'height',
             'volume',
             'when',
             'loading',
@@ -27,9 +30,17 @@ class OrderCargoSerializer(serializers.ModelSerializer):
             'price_in_UZS', ]
 
     def create(self, validated_data):
+        length = validated_data.get('length', 0)
+        width = validated_data.get('width', 0)
+        height = validated_data.get('height', 0)
+        validated_data['volume'] = length * width * height
         return AddCargo.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
+        length = validated_data.get('length', instance.length)
+        width = validated_data.get('width', instance.width)
+        height = validated_data.get('height', instance.height)
+        validated_data['volume'] = length * width * height
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
         instance.save()

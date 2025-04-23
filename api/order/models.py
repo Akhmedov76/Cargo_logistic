@@ -27,9 +27,9 @@ CURRENCY_CHOICES = [
 class AddCargo(TimeModelMixin, models.Model):
     cargo = models.ForeignKey(CargoType, on_delete=models.CASCADE, null=True, blank=True)
     weight = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='kg')
-    length = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m')
-    width = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m')
-    height = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m')
+    length = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
+    width = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
+    height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
     volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
     when = models.CharField(max_length=30, blank=True, choices=when_loading)
     loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
@@ -56,11 +56,11 @@ class AddCargo(TimeModelMixin, models.Model):
             self.volume = None
 
         if self.bid_currency == 'SUM':
-            self.price_in_UZS = self.bid_price
+            self.currency_exchange_to_sum = self.bid_price
         else:
             rate = get_currency_rate(self.bid_currency)
             if rate and self.bid_price:
-                self.price_in_UZS = float(self.bid_price) * rate
+                self.currency_exchange_to_sum = float(self.bid_price) * rate
         super().save(*args, **kwargs)
 
 
