@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from api.base.currency_service import get_currency_rate
 from api.base.mixins import TimeModelMixin
 from api.cargo_base.models import CargoType
 from api.country.models import District
@@ -14,21 +15,44 @@ class AddCargo(TimeModelMixin, models.Model):
         ('permanent', 'Permanent'),
         ('no_load', 'No load')
     ]
+    CURRENCY_CHOICES = [
+        ('USD', 'USD'),
+        ('EUR', 'EUR'),
+        ('RUB', 'RUB'),
+        ('GBP', 'GBP'),
+        ('CNY', 'CNY'),
+        ('KZT', 'KZT'),
+        ('SUM', 'UZS')
+    ]
     cargo = models.ForeignKey(CargoType, on_delete=models.CASCADE, blank=True, null=True)
     weight = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
     volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
 
-    when = models.CharField(max_length=255, blank=True, choices=when_loading)
+    when = models.CharField(max_length=30, blank=True, choices=when_loading)
     loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
                                 related_name='loading')
     unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
                                   related_name='unloading')
     services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, blank=True, null=True)
-    role = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    role = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='role')
+    GPS_monitoring = models.BooleanField(default=False)
+    contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='contact')
+
+    bid_currency = models.CharField(max_length=10, choices=CURRENCY_CHOICES, default='SUM')
+    bid_price = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Delivery'
         verbose_name_plural = 'Deliveries'
+
+    def bid_in_uzs(self):
+        if self.bid_currency == 'SUM':
+            return self.bid_price
+        rate = get_currency_rate(self.bid_currency)
+        print(rate)
+        if rate:
+            return self.bid_price * rate
+        return 0
 
 
 class DeliveryForDrivers(TimeModelMixin, models.Model):
