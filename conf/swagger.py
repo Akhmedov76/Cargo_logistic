@@ -17,8 +17,8 @@ class BothHttpAndHttpsSchemaGenerator(OpenAPISchemaGenerator):
 
 schema_view = get_schema_view(
     openapi.Info(
-        title='Filling Stations - System API',
-        description='Filling Stations API',
+        title='Cargo Logistic - System API',
+        description='Cargo Logistic API',
         default_version="v1",
     ),
     public=True,
