@@ -5,7 +5,7 @@ from drf_yasg.generators import OpenAPISchemaGenerator
 from rest_framework.authentication import BasicAuthentication, SessionAuthentication
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
-from api.core.permissions import IsSuperUser
+from api.base.permissions import IsSuperUser
 
 
 class BothHttpAndHttpsSchemaGenerator(OpenAPISchemaGenerator):

@@ -68,7 +68,6 @@ class OrderCarrierSerializer(serializers.ModelSerializer):
         fields = [
             'contact',
             'loading',
-            'vehicle',
             'body_volume',
             'where',
             'where_to',
