@@ -53,13 +53,15 @@ class OrderCargoSerializer(serializers.ModelSerializer):
 
 
 class OrderCarrierSerializer(serializers.ModelSerializer):
-    contact = serializers.ChoiceField(choices=User.ROLE_CHOICES, required=False)
+    contact = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
     loading = serializers.ChoiceField(choices=DeliveryForDrivers.Loading_choice, required=False)
-    vehicle = serializers.CharField(max_length=55, required=False, allow_blank=True)
     body_volume = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
     where = serializers.PrimaryKeyRelatedField(queryset=District.objects.all(), required=False)
     where_to = serializers.PrimaryKeyRelatedField(queryset=District.objects.all(), required=False)
-    company = serializers.CharField(max_length=55, required=False, allow_blank=True)
+    bid_currency = serializers.CharField(required=False, max_length=10)
+    bid_price = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
+    price_in_UZS = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
+    GPS_monitoring = serializers.BooleanField(required=False)
 
     class Meta:
         model = DeliveryForDrivers
@@ -70,11 +72,15 @@ class OrderCarrierSerializer(serializers.ModelSerializer):
             'body_volume',
             'where',
             'where_to',
-            'company',
+            'bid_currency',
+            'bid_price',
+            'price_in_UZS',
+            'GPS_monitoring',
         ]
 
     def create(self, validated_data):
-        return DeliveryForDrivers.objects.create(**validated_data)
+        instance = DeliveryForDrivers.objects.create(**validated_data)
+        return instance
 
     def update(self, instance, validated_data):
         for attr, value in validated_data.items():

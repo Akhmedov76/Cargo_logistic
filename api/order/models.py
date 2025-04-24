@@ -41,7 +41,7 @@ class AddCargo(TimeModelMixin, models.Model):
     GPS_monitoring = models.BooleanField(default=False)
 
     bid_currency = models.CharField(max_length=10, choices=CURRENCY_CHOICES, default='SUM')
-    bid_price = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    bid_price = models.DecimalField(max_digits=12, decimal_places=2)
     price_in_UZS = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
 
     class Meta:
@@ -64,6 +64,24 @@ class AddCargo(TimeModelMixin, models.Model):
 
 
 class DeliveryForDrivers(TimeModelMixin, models.Model):
+    CAR_TYPE = [
+        ('truck', 'Truck'),
+        ('semitrailer', 'Semitrailer'),
+    ]
+    CAR_BODY_TYPE = [
+        ('hatchback', 'Hatchback'),
+        ('sedan', 'Sedan'),
+        ('van', 'Van'),
+        ('minivan', 'Minivan'),
+        ('pickup', 'Pickup'),
+        ('trailer', 'Trailer'),
+        ('flatbed', 'Flatbed'),
+        ('wagon', 'Wagon'),
+        ('bus', 'Bus'),
+        ('container', 'Container'),
+        ('auto transporter', 'Auto transporter'),
+        ('gas carrier', 'Gas carrier'),
+    ]
     Loading_choice = [
         ('top', 'Top'),
         ('lateral', 'Lateral'),
@@ -71,6 +89,10 @@ class DeliveryForDrivers(TimeModelMixin, models.Model):
         ('with full awning', 'With full awning'),
         ('with the removal of crossbars', 'With the removal of crossbars'),
     ]
+    car_model = models.CharField(choices=CAR_TYPE, max_length=255, blank=True, null=True)
+    if car_model == 'truck':
+        car_body_type = models.CharField(choices=CAR_BODY_TYPE, max_length=255, blank=True, null=True)
+
     loading = models.CharField(choices=Loading_choice, max_length=255, blank=True, null=True)
     weight = models.DecimalField(max_digits=12, decimal_places=2, help_text='kg')
     length = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
