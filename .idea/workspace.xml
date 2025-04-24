@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="create docker and compose">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,15 +96,7 @@
       <workItem from="1745381618536" duration="1108000" />
       <workItem from="1745386925056" duration="315000" />
       <workItem from="1745387248740" duration="11697000" />
-      <workItem from="1745423712722" duration="9775000" />
-    </task>
-    <task id="LOCAL-00004" summary="Add selective auto-import and GitHub PR settings to IDE&#10;&#10;This update modifies the IDE configuration to enable selective auto-import functionality and integrates GitHub pull request settings. Additional changes include updates to task management and Git-related metadata for better tracking and usability.">
-      <option name="closed" value="true" />
-      <created>1745284773573</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1745284773573</updated>
+      <workItem from="1745423712722" duration="12467000" />
     </task>
     <task id="LOCAL-00005" summary="update">
       <option name="closed" value="true" />
@@ -491,14 +482,21 @@
       <option name="project" value="LOCAL" />
       <updated>1745428562379</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="create docker and compose">
+      <option name="closed" value="true" />
+      <created>1745473615514</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1745473615514</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update all admin.py" />
     <MESSAGE value="update order models.py" />
     <MESSAGE value="update settings file" />
     <MESSAGE value="update migrations" />
@@ -523,7 +521,8 @@
     <MESSAGE value="update admin.py" />
     <MESSAGE value="update model" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="create docker and compose" />
+    <option name="LAST_COMMIT_MESSAGE" value="create docker and compose" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Cargo$currency_service.coverage" NAME="currency_service Coverage Results" MODIFIED="1745343933339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api/base" />
