@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 
+from api.base.paginator import CustomPagination
 from api.order.models import AddCargo, DeliveryForDrivers
 from api.order.serializers import OrderCargoSerializer, OrderCarrierSerializer
 
@@ -13,6 +14,7 @@ class CargoRequestView(ModelViewSet):
     queryset = AddCargo.objects.all()
     serializer_class = OrderCargoSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = CustomPagination
 
     @swagger_auto_schema(query_serializer=None)
     @action(detail=False, methods=['get'], url_path='get-cargo-owner')
@@ -21,8 +23,10 @@ class CargoRequestView(ModelViewSet):
             order = AddCargo.objects.all()
         else:
             order = AddCargo.objects.filter(contact=request.user)
-        serializer = self.get_serializer(order, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        paginator = self.pagination_class()
+        result_page = paginator.paginate_queryset(order, request)
+        serializer = self.get_serializer(result_page, many=True)
+        return paginator.get_paginated_response(serializer.data)
 
     @swagger_auto_schema(request_body=OrderCargoSerializer)
     @action(detail=False, methods=['post'], url_path='create-cargo-owner')
