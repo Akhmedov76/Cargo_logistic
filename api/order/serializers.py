@@ -9,10 +9,19 @@ from api.users.models import User
 
 class OrderCargoSerializer(serializers.ModelSerializer):
     cargo = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    weight = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
+    length = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
+    width = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
+    height = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
+    
     services = serializers.SlugRelatedField(read_only=True, slug_field='name')
     loading = serializers.SlugRelatedField(read_only=True, slug_field='name')
     unloading = serializers.SlugRelatedField(read_only=True, slug_field='name')
     contact = serializers.SlugRelatedField(read_only=True, slug_field='email')
+    bid_currency = serializers.CharField(required=False, max_length=10)
+    bid_price = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
+    price_in_UZS = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
+    GPS_monitoring = serializers.BooleanField(required=False)
 
     class Meta:
         model = AddCargo
