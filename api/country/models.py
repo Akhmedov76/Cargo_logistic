@@ -6,7 +6,6 @@ from api.base import TimeModelMixin
 
 class Country(models.Model):
     name = models.CharField(_("Respublika nomi"), max_length=100)
-
     code = models.CharField(max_length=15, blank=True, )
 
     def __str__(self):
@@ -19,9 +18,12 @@ class Country(models.Model):
 
 
 class Region(models.Model):
-    country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='regions')
-    name = models.CharField(_("Viloyat nomi"), max_length=100)
-    code = models.CharField(max_length=15, blank=True, )
+    name = models.CharField(_('Название'), max_length=255)
+    code = models.CharField(max_length=50)
+    country = models.ForeignKey('Country', on_delete=models.CASCADE, null=True, blank=True)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+    lon = models.FloatField(blank=True, null=True)
+    lat = models.FloatField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.name} ({self.country.name})"
