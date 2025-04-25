@@ -25,7 +25,7 @@ CURRENCY_CHOICES = [
 
 
 class AddCargo(TimeModelMixin, models.Model):
-    cargo = models.ForeignKey(CargoType, on_delete=models.CASCADE, null=True, blank=True)
+    cargo_type = models.ForeignKey(CargoType, on_delete=models.CASCADE, null=True, blank=True)
     weight = models.DecimalField(max_digits=12, decimal_places=2, help_text='kg')
     length = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
     width = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
@@ -47,6 +47,9 @@ class AddCargo(TimeModelMixin, models.Model):
     bid_currency = models.CharField(max_length=10, choices=CURRENCY_CHOICES, default='SUM')
     bid_price = models.DecimalField(max_digits=12, decimal_places=2)
     price_in_UZS = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.contact} - {self.loading} to {self.unloading}"
 
     class Meta:
         verbose_name = _('Cargo')

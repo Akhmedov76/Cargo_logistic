@@ -18,12 +18,12 @@ class Country(models.Model):
 
 
 class Region(models.Model):
-    name = models.CharField(_('Название'), max_length=255)
+    name = models.CharField(_('Nomi'), max_length=255)
     code = models.CharField(max_length=50)
     country = models.ForeignKey('Country', on_delete=models.CASCADE, null=True, blank=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
-    lon = models.FloatField(blank=True, null=True)
     lat = models.FloatField(blank=True, null=True)
+    lon = models.FloatField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.name} ({self.country.name})"
@@ -35,15 +35,15 @@ class Region(models.Model):
 
 
 class District(TimeModelMixin):
-    name = models.CharField(_('Название'), max_length=255)
+    name = models.CharField(_('Nomi'), max_length=255)
+    region = models.ForeignKey(Region, on_delete=models.CASCADE, related_name='districts')
     coordinates = models.TextField(null=True, blank=True)
     code = models.CharField(max_length=50)
-    region = models.ForeignKey(Region, on_delete=models.CASCADE, related_name='districts')
 
     class Meta:
         ordering = ('-created_at',)
-        verbose_name = _("Округ")
-        verbose_name_plural = _("Округ")
+        verbose_name = _("Tuman")
+        verbose_name_plural = _("Tumanlar")
 
     def __str__(self):
-        return f"{self.region.name} - {self.code}"
+        return f"{self.name}/{self.region.name}/{self.region.country.name}"

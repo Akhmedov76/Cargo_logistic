@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update">
+    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update country model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/country/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/country/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/country/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/country/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,15 +97,7 @@
       <workItem from="1745381618536" duration="1108000" />
       <workItem from="1745386925056" duration="315000" />
       <workItem from="1745387248740" duration="11697000" />
-      <workItem from="1745423712722" duration="33499000" />
-    </task>
-    <task id="LOCAL-00011" summary="update order models.py">
-      <option name="closed" value="true" />
-      <created>1745288079287</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1745288079287</updated>
+      <workItem from="1745423712722" duration="35131000" />
     </task>
     <task id="LOCAL-00012" summary="update settings file">
       <option name="closed" value="true" />
@@ -489,14 +483,21 @@
       <option name="project" value="LOCAL" />
       <updated>1745554316855</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="update country model">
+      <option name="closed" value="true" />
+      <created>1745555742613</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1745555742613</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update settings" />
     <MESSAGE value="add swagger settings for ursl" />
     <MESSAGE value="updapte" />
     <MESSAGE value="updapte admin.py" />
@@ -521,7 +522,8 @@
     <MESSAGE value="update swagger title" />
     <MESSAGE value="update name" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="update country model" />
+    <option name="LAST_COMMIT_MESSAGE" value="update country model" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Cargo$currency_service.coverage" NAME="currency_service Coverage Results" MODIFIED="1745343933339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api/base" />

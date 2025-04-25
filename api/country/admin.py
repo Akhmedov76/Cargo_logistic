@@ -11,7 +11,7 @@ class CountryAdmin(admin.ModelAdmin):
 
 @admin.register(Region)
 class RegionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'code', 'country')
+    list_display = ('id', 'name', 'code', 'country', 'lat', 'lon')
     search_fields = ('name', 'code')
     list_filter = ('country',)
     autocomplete_fields = ('country',)
@@ -19,7 +19,7 @@ class RegionAdmin(admin.ModelAdmin):
 
 @admin.register(District)
 class DistrictAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'code', 'region')
+    list_display = ('id', 'name', 'region', 'code',)
     search_fields = ('name',)
     ordering = ('name',)
     list_filter = ('region', 'name')
