@@ -59,6 +59,7 @@ class DeliveryOrderView(ModelViewSet):
     queryset = DeliveryForDrivers.objects.all()
     serializer_class = OrderCarrierSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = CustomPagination
 
     @swagger_auto_schema(query_serializer=None)
     @action(detail=False, methods=['get'], url_path='get-driver-order')
@@ -67,7 +68,9 @@ class DeliveryOrderView(ModelViewSet):
             order = DeliveryForDrivers.objects.all()
         else:
             order = DeliveryForDrivers.objects.filter(contact=request.user)
-        serializer = self.get_serializer(order, many=True)
+        paginator = self.pagination_class()
+        result_page = paginator.paginate_queryset(order, request)
+        serializer = self.get_serializer(result_page, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     @swagger_auto_schema(request_body=OrderCarrierSerializer)
