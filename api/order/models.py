@@ -32,12 +32,8 @@ class AddCargo(TimeModelMixin, models.Model):
     height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
     volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
     when = models.CharField(max_length=30, blank=True, choices=when_loading)
-    loading = models.ForeignKey(Country, on_delete=models.CASCADE, null=True,
+    loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
                                 related_name='loading')
-    if loading:
-        loading = models.ForeignKey(Region, on_delete=models.CASCADE, null=True, )
-        if loading:
-            loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, )
     unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
                                   related_name='unloading')
     services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, )
