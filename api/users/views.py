@@ -1,7 +1,7 @@
 from django.contrib.admin import action
 from django.utils import timezone
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -62,13 +62,14 @@ class LoginView(APIView):
 class UserListCreateView(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserCreateSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     @swagger_auto_schema(query_serializer=UserSerializer)
     @action(detail=False, methods=['get'], url_path='get-users')
     def get_users(self, request):
         if request.user.is_staff:
             users = User.objects.all()
+            print(request.user.is_staff)
         else:
             users = User.objects.filter(id=request.user.id)
         serializer = UserSerializer(users, many=True)

@@ -21,15 +21,15 @@ class CargoRequestView(ModelViewSet):
             order = AddCargo.objects.all()
         else:
             order = AddCargo.objects.filter(contact=request.user)
-        serializer = OrderCargoSerializer(order, many=True)
+        serializer = self.get_serializer(order, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     @swagger_auto_schema(request_body=OrderCargoSerializer)
     @action(detail=False, methods=['post'], url_path='create-cargo-owner')
     def create_order(self, request):
-        serializer = OrderCargoSerializer(data=request.data)
+        serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(role=request.user)
+            serializer.save(contact=request.user)
             return Response({"message": "Order created successfully"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -44,7 +44,7 @@ class CargoRequestView(ModelViewSet):
         except AddCargo.DoesNotExist:
             return Response({"error": "Cargo not found or access denied"}, status=status.HTTP_404_NOT_FOUND)
 
-        serializer = OrderCargoSerializer(order, data=request.data, partial=True)
+        serializer = self.get_serializer(order, data=request.data, partial=True)  # Fixed to use "self.get_serializer"
         if serializer.is_valid():
             serializer.save()
             return Response({"message": "Order updated successfully"}, status=status.HTTP_200_OK)
@@ -56,18 +56,21 @@ class DeliveryOrderView(ModelViewSet):
     serializer_class = OrderCarrierSerializer
     permission_classes = [IsAuthenticated]
 
-    @swagger_auto_schema(query_serializer=OrderCarrierSerializer)
+    @swagger_auto_schema(query_serializer=None)
     @action(detail=False, methods=['get'], url_path='get-driver-order')
     def get_order(self, request):
-        order = DeliveryForDrivers.objects.filter(role=request.user.role)
-        serializer = OrderCarrierSerializer(order, many=True)
+        if request.user.is_staff:
+            order = DeliveryForDrivers.objects.all()
+        else:
+            order = DeliveryForDrivers.objects.filter(contact=request.user)
+        serializer = self.get_serializer(order, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    @swagger_auto_schema(query_serializer=OrderCarrierSerializer)
+    @swagger_auto_schema(request_body=OrderCarrierSerializer)
     @action(detail=False, methods=['post'], url_path='create-driver-order')
     def create_order(self, request):
-        serializer = OrderCarrierSerializer(data=request.data)
+        serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(contact=request.user)
             return Response({"message": "Order created successfully"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

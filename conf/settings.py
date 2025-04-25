@@ -141,6 +141,7 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%d-%m-%Y %H:%M:%S",
     'DEFAULT_PERMISSION_CLASSES': [
         "rest_framework.permissions.DjangoModelPermissions",
+        # "rest_framework.permissions.IsAuthenticated",
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
