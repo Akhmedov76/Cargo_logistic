@@ -14,6 +14,7 @@ class RegionAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'code', 'country')
     search_fields = ('name', 'code')
     list_filter = ('country',)
+    autocomplete_fields = ('country',)
 
 
 @admin.register(District)
@@ -22,3 +23,4 @@ class DistrictAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     ordering = ('name',)
     list_filter = ('region', 'name')
+    autocomplete_fields = ('region',)

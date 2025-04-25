@@ -11,5 +11,6 @@ class CargoType(TimeModelMixin, models.Model):
         return f"{self.name} ({self.descriptions})"
 
     class Meta:
-        verbose_name = 'Element'
-        verbose_name_plural = 'Elements'
+        verbose_name = 'Cargo type'
+        verbose_name_plural = 'Cargo types'
+        ordering = ['name']

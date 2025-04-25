@@ -4,19 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/api/base/permissions.py" afterDir="false" />
+    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/cargo_base/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/cargo_base/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/cargo_base/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/country/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/country/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/country/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/country/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/country/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/migrations/0001_initial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/migrations/0002_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/migrations/0003_remove_deliveryfordrivers_body_volume_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/services/migrations/0001_initial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api/users/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/swagger.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/swagger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,31 +104,7 @@
       <workItem from="1745381618536" duration="1108000" />
       <workItem from="1745386925056" duration="315000" />
       <workItem from="1745387248740" duration="11697000" />
-      <workItem from="1745423712722" duration="22709000" />
-    </task>
-    <task id="LOCAL-00007" summary="create all use app">
-      <option name="closed" value="true" />
-      <created>1745286571395</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1745286571395</updated>
-    </task>
-    <task id="LOCAL-00008" summary="update all admin.py">
-      <option name="closed" value="true" />
-      <created>1745287720194</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1745287720194</updated>
-    </task>
-    <task id="LOCAL-00009" summary="update">
-      <option name="closed" value="true" />
-      <created>1745287838534</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1745287838534</updated>
+      <workItem from="1745423712722" duration="31992000" />
     </task>
     <task id="LOCAL-00010" summary="update order models.py">
       <option name="closed" value="true" />
@@ -498,15 +474,37 @@
       <option name="project" value="LOCAL" />
       <updated>1745487094062</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="update">
+      <option name="closed" value="true" />
+      <created>1745488112990</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1745488112990</updated>
+    </task>
+    <task id="LOCAL-00057" summary="update swagger title">
+      <option name="closed" value="true" />
+      <created>1745488229024</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1745488229024</updated>
+    </task>
+    <task id="LOCAL-00058" summary="update name">
+      <option name="closed" value="true" />
+      <created>1745488481641</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1745488481641</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update settings file" />
-    <MESSAGE value="update migrations" />
     <MESSAGE value="update settings" />
     <MESSAGE value="add swagger settings for ursl" />
     <MESSAGE value="updapte" />
@@ -530,7 +528,9 @@
     <MESSAGE value="create docker and compose" />
     <MESSAGE value="update docker and compose" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="update swagger title" />
+    <MESSAGE value="update name" />
+    <option name="LAST_COMMIT_MESSAGE" value="update name" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Cargo$currency_service.coverage" NAME="currency_service Coverage Results" MODIFIED="1745343933339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api/base" />

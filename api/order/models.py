@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from api.base.currency_service import get_currency_rate
 from api.base.mixins import TimeModelMixin
 from api.cargo_base.models import CargoType
-from api.country.models import District
+from api.country.models import District, Country, Region
 from api.services.models import ServicesModel
 from api.users.models import User
 
@@ -32,8 +32,12 @@ class AddCargo(TimeModelMixin, models.Model):
     height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
     volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
     when = models.CharField(max_length=30, blank=True, choices=when_loading)
-    loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
+    loading = models.ForeignKey(Country, on_delete=models.CASCADE, null=True,
                                 related_name='loading')
+    if loading:
+        loading = models.ForeignKey(Region, on_delete=models.CASCADE, null=True, )
+        if loading:
+            loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, )
     unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
                                   related_name='unloading')
     services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, )
@@ -91,7 +95,7 @@ class DeliveryForDrivers(TimeModelMixin, models.Model):
     ]
     car_model = models.CharField(choices=CAR_TYPE, max_length=255, blank=True, null=True)
     if car_model == 'truck':
-        car_body_type = models.CharField(choices=CAR_BODY_TYPE, max_length=255, blank=True, null=True)
+        car_body_type = models.CharField(choices=CAR_BODY_TYPE, max_length=255, )
 
     loading = models.CharField(choices=Loading_choice, max_length=255, blank=True, null=True)
     weight = models.DecimalField(max_digits=12, decimal_places=2, help_text='kg')
