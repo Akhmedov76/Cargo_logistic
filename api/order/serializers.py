@@ -1,3 +1,5 @@
+from decimal import InvalidOperation, Decimal
+
 from rest_framework import serializers
 
 from api.base.base import Loading_choice
@@ -96,4 +98,4 @@ class OrderCarrierSerializer(serializers.ModelSerializer):
 class LocationInputSerializer(serializers.Serializer):
     loading_location = serializers.CharField(max_length=255)
     unloading_location = serializers.CharField(max_length=255)
-    volume = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True, help_text='m3')
+    volume = serializers.CharField(required=False, allow_blank=True, allow_null=True)

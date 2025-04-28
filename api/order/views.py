@@ -31,39 +31,6 @@ class CargoRequestView(viewsets.GenericViewSet, viewsets.mixins.ListModelMixin):
         serializer = self.get_serializer(result_page, many=True)
         return paginator.get_paginated_response(serializer.data)
 
-    # @action(detail=False, methods=['get'], url_path='cargo/get-drivers')
-    # def get_matched_drivers(self, request):
-    #     serializer = OrderCargoSerializer(data=request.query_params)
-    #     serializer.is_valid(raise_exception=True)
-    #     validated_data = serializer.validated_data
-    #
-    #     cargo = AddCargo(**validated_data)
-    #
-    #     matched_drivers = match_cargo_to_driver(cargo)
-    #
-    #     data = [
-    #         {
-    #             'driver_id': driver.id,
-    #             'contact': driver.contact.full_name() if driver.contact else None,
-    #             'phone_number': driver.contact.phone_number if driver.contact else None,
-    #             'where': driver.where.name if driver.where else None,
-    #             'where_to': driver.where_to.name if driver.where_to else None,
-    #             'car_model': driver.car_model if driver.car_model else None,
-    #             'weight_kg': driver.weight if driver.weight else None,
-    #             'volume_m3': driver.volume if driver.volume else None,
-    #             'width': driver.width if driver.width else None,
-    #             'length': driver.length if driver.length else None,
-    #             'height': driver.height if driver.height else None,
-    #             'bid_price': driver.bid_price if driver.bid_price else None,
-    #             'price_in_UZS': driver.price_in_UZS if driver.price_in_UZS else None,
-    #         }
-    #         for driver in matched_drivers
-    #     ]
-    #     paginator = self.pagination_class()
-    #     result_page = paginator.paginate_queryset(data, request)
-    #
-    #     return paginator.get_paginated_response(result_page)
-
     @swagger_auto_schema(request_body=LocationInputSerializer)
     @action(detail=False, methods=['POST'], url_path='cargo/get-matched-drivers')
     def get_where_where_to(self, request):
@@ -73,10 +40,20 @@ class CargoRequestView(viewsets.GenericViewSet, viewsets.mixins.ListModelMixin):
 
         loading_location = validated_data['loading_location']
         unloading_location = validated_data['unloading_location']
-        volume = validated_data['volume']
+        volume = validated_data.get('volume')
+        if volume in ["", None]:
+            volume = None
 
-        cargo = AddCargo.objects.filter(volume, loading__name=loading_location,
-                                        unloading__name=unloading_location).first()
+        cargo_queryset = AddCargo.objects.filter(
+            loading__name=loading_location,
+            unloading__name=unloading_location
+        )
+
+        if volume is not None:
+            cargo_queryset = cargo_queryset.filter(volume__gte=volume)
+
+        cargo = cargo_queryset.first()
+
         if not cargo:
             return Response({"message": "No matching cargo found."}, status=status.HTTP_404_NOT_FOUND)
 
@@ -100,6 +77,7 @@ class CargoRequestView(viewsets.GenericViewSet, viewsets.mixins.ListModelMixin):
             }
             for driver in matched_where_where_to
         ]
+
         if not datas:
             return Response({"message": "No matched drivers found."}, status=status.HTTP_404_NOT_FOUND)
 
