@@ -91,3 +91,8 @@ class OrderCarrierSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         return super().update(instance, validated_data)
+
+
+class LocationInputSerializer(serializers.Serializer):
+    loading_location = serializers.CharField(max_length=255)
+    unloading_location = serializers.CharField(max_length=255)

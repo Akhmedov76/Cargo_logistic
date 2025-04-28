@@ -19,7 +19,7 @@ class RegionAdmin(admin.ModelAdmin):
 
 @admin.register(District)
 class DistrictAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'region', 'code',)
+    list_display = ('id', 'name', 'region', 'coordinates', 'code',)
     search_fields = ('name',)
     ordering = ('name',)
     list_filter = ('region', 'name')

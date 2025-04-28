@@ -14,7 +14,6 @@ when_loading = [
     ('no_load', 'No load')
 ]
 weekly_date = [
-    ('every_day', 'Every day'),
     ('monday', 'Monday'),
     ('tuesday', 'Tuesday'),
     ('wednesday', 'Wednesday'),
@@ -36,24 +35,22 @@ CURRENCY_CHOICES = [
 
 class AddCargo(TimeModelMixin, models.Model):
     cargo_type = models.ForeignKey(CargoType, on_delete=models.CASCADE, null=True, blank=True)
-    weight = models.DecimalField(max_digits=12, decimal_places=2, help_text='kg')
-    length = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
-    width = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
-    height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
+    weight = models.DecimalField(max_digits=12, decimal_places=2, help_text='kg', null=True, blank=True)
+    length = models.DecimalField(max_digits=12, decimal_places=2, help_text='m', null=True, blank=True)
+    width = models.DecimalField(max_digits=12, decimal_places=2, help_text='m', null=True, blank=True)
+    height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m', null=True, blank=True)
     volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
     when = models.CharField(max_length=30, blank=True, choices=when_loading)
     when_to = models.CharField(max_length=30, blank=True, choices=weekly_date, null=True)
 
-    loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
-                                related_name='loading')
-    unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
-                                  related_name='unloading')
-    services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, )
+    loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, related_name='loading')
+    unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, related_name='unloading')
+    services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, null=True, related_name='services' )
     contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='cargo_roles')
     GPS_monitoring = models.BooleanField(default=False)
 
     bid_currency = models.CharField(max_length=10, choices=CURRENCY_CHOICES, default='SUM')
-    bid_price = models.DecimalField(max_digits=12, decimal_places=2)
+    bid_price = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
     price_in_UZS = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
@@ -116,7 +113,7 @@ class DeliveryForDrivers(TimeModelMixin, models.Model):
     volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
     GPS_monitoring = models.BooleanField(default=False)
     when = models.CharField(max_length=30, blank=True, choices=when_loading)
-    where = models.ForeignKey(District, on_delete=models.CASCADE, )
+    where = models.ForeignKey(District, on_delete=models.CASCADE, related_name='delivery_where')
     where_to = models.ForeignKey(District, on_delete=models.CASCADE, related_name='delivery_where_to')
 
     bid_currency = models.CharField(max_length=10, choices=CURRENCY_CHOICES, default='SUM')

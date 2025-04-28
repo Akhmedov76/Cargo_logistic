@@ -3,13 +3,12 @@ from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status, viewsets
 from rest_framework.decorators import action, permission_classes
 from rest_framework.response import Response
-from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 
 from api.base.paginator import CustomPagination
 from api.order.models import AddCargo, DeliveryForDrivers
-from api.order.serializers import OrderCargoSerializer, OrderCarrierSerializer
-from api.order.services import match_cargo_to_driver
+from api.order.serializers import OrderCargoSerializer, OrderCarrierSerializer, LocationInputSerializer
+from api.order.services import match_cargo_to_driver, match_where_where_to
 
 
 # def your_view(request):
@@ -34,7 +33,7 @@ class CargoRequestView(viewsets.GenericViewSet, viewsets.mixins.ListModelMixin):
 
     @action(detail=False, methods=['get'], url_path='cargo/get-drivers')
     def get_matched_drivers(self, request):
-        serializer = OrderCargoSerializer(data=request.data)
+        serializer = OrderCargoSerializer(data=request.query_params)
         serializer.is_valid(raise_exception=True)
         validated_data = serializer.validated_data
 
@@ -50,8 +49,8 @@ class CargoRequestView(viewsets.GenericViewSet, viewsets.mixins.ListModelMixin):
                 'where': driver.where.name if driver.where else None,
                 'where_to': driver.where_to.name if driver.where_to else None,
                 'car_model': driver.car_model if driver.car_model else None,
-                'weight': driver.weight if driver.weight else None,
-                'volume m3': driver.volume if driver.volume else None,
+                'weight_kg': driver.weight if driver.weight else None,
+                'volume_m3': driver.volume if driver.volume else None,
                 'width': driver.width if driver.width else None,
                 'length': driver.length if driver.length else None,
                 'height': driver.height if driver.height else None,
@@ -60,8 +59,36 @@ class CargoRequestView(viewsets.GenericViewSet, viewsets.mixins.ListModelMixin):
             }
             for driver in matched_drivers
         ]
+        paginator = self.pagination_class()
+        result_page = paginator.paginate_queryset(data, request)
 
-        return Response(data, status=status.HTTP_200_OK)
+        return paginator.get_paginated_response(result_page)
+
+    @swagger_auto_schema(request_body=LocationInputSerializer)
+    @action(detail=False, methods=['POST'], url_path='cargo/get-where-where-to')
+    def get_where_where_to(self, request):
+        serializer = LocationInputSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        validated_data = serializer.validated_data
+
+        loading_location = validated_data['loading_location']
+        unloading_location = validated_data['unloading_location']
+
+        cargo = AddCargo.objects.filter(loading__name=loading_location, unloading__name=unloading_location).first()
+        if not cargo:
+            return Response({"error": "No matching cargo found."}, status=status.HTTP_404_NOT_FOUND)
+
+        matched_where_where_to = match_where_where_to(cargo)
+        data = [
+            {
+                'location_from': driver.where.name if driver.where else None,
+                'location_to': driver.where_to.name if driver.where_to else None,
+            }
+            for driver in matched_where_where_to
+        ]
+        paginator = self.pagination_class()
+        result_page = paginator.paginate_queryset(data, request)
+        return paginator.get_paginated_response(result_page)
 
     @swagger_auto_schema(request_body=OrderCargoSerializer)
     @action(detail=False, methods=['post'], url_path='create-cargo-owner')
