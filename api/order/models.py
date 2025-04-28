@@ -23,6 +23,16 @@ class AddCargo(TimeModelMixin, models.Model):
 
     loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, related_name='loading')
     unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, related_name='unloading')
+
+    @property
+    def distance_in_km(self):
+        if self.loading and self.unloading and self.loading.coordinates and self.unloading.coordinates:
+            from geopy.distance import geodesic
+            loading_coords = tuple(map(float, self.loading.coordinates.split(',')))
+            unloading_coords = tuple(map(float, self.unloading.coordinates.split(',')))
+            return geodesic(loading_coords, unloading_coords).km
+        return None
+
     services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, null=True, related_name='services')
     contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='cargo_roles')
     GPS_monitoring = models.BooleanField(default=False)
