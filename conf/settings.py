@@ -136,6 +136,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Use custom user model
 AUTH_USER_MODEL = 'users.User'
 
+# ASGI_APPLICATION = 'conf.asgi.application'
+
 # rest-framework configuration
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%d-%m-%Y %H:%M:%S",

@@ -13,6 +13,15 @@ when_loading = [
     ('permanent', 'Permanent'),
     ('no_load', 'No load')
 ]
+weekly_date = [
+    ('monday', 'Monday'),
+    ('tuesday', 'Tuesday'),
+    ('wednesday', 'Wednesday'),
+    ('thursday', 'Thursday'),
+    ('friday', 'Friday'),
+    ('saturday', 'Saturday'),
+    ('sunday', 'Sunday'),
+]
 CURRENCY_CHOICES = [
     ('USD', 'USD'),
     ('EUR', 'EUR'),
@@ -26,22 +35,22 @@ CURRENCY_CHOICES = [
 
 class AddCargo(TimeModelMixin, models.Model):
     cargo_type = models.ForeignKey(CargoType, on_delete=models.CASCADE, null=True, blank=True)
-    weight = models.DecimalField(max_digits=12, decimal_places=2, help_text='kg')
-    length = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
-    width = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
-    height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
+    weight = models.DecimalField(max_digits=12, decimal_places=2, help_text='kg', null=True, blank=True)
+    length = models.DecimalField(max_digits=12, decimal_places=2, help_text='m', null=True, blank=True)
+    width = models.DecimalField(max_digits=12, decimal_places=2, help_text='m', null=True, blank=True)
+    height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m', null=True, blank=True)
     volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
     when = models.CharField(max_length=30, blank=True, choices=when_loading)
-    loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
-                                related_name='loading')
-    unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
-                                  related_name='unloading')
-    services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, )
+    when_to = models.CharField(max_length=30, blank=True, choices=weekly_date, null=True)
+
+    loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, related_name='loading')
+    unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, related_name='unloading')
+    services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, null=True, related_name='services' )
     contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='cargo_roles')
     GPS_monitoring = models.BooleanField(default=False)
 
     bid_currency = models.CharField(max_length=10, choices=CURRENCY_CHOICES, default='SUM')
-    bid_price = models.DecimalField(max_digits=12, decimal_places=2)
+    bid_price = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
     price_in_UZS = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
@@ -104,7 +113,7 @@ class DeliveryForDrivers(TimeModelMixin, models.Model):
     volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
     GPS_monitoring = models.BooleanField(default=False)
     when = models.CharField(max_length=30, blank=True, choices=when_loading)
-    where = models.ForeignKey(District, on_delete=models.CASCADE, )
+    where = models.ForeignKey(District, on_delete=models.CASCADE, related_name='delivery_where')
     where_to = models.ForeignKey(District, on_delete=models.CASCADE, related_name='delivery_where_to')
 
     bid_currency = models.CharField(max_length=10, choices=CURRENCY_CHOICES, default='SUM')
@@ -113,9 +122,26 @@ class DeliveryForDrivers(TimeModelMixin, models.Model):
 
     contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
+    current_latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    current_longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+
     def __str__(self):
         return f"{self.contact} - {self.where} to {self.where_to}"
 
     class Meta:
         verbose_name = _('Driver')
         verbose_name_plural = _('Drivers')
+
+    def save(self, *args, **kwargs):
+        if self.width and self.length and self.height:
+            self.volume = self.width * self.length * self.height
+        else:
+            self.volume = None
+
+        if self.bid_currency == 'SUM':
+            self.price_in_UZS = self.bid_price
+        else:
+            rate = get_currency_rate(self.bid_currency)
+            if rate and self.bid_price:
+                self.price_in_UZS = float(self.bid_price) * rate
+        super().save(*args, **kwargs)

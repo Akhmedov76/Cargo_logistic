@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update  model">
+    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/country/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/country/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,12 +24,19 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Dockerfile" />
+        <option value="HTML File" />
         <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -50,24 +59,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.currency_service.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Uzinfocom/airplane_statistics-main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.currency_service.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "git-widget-placeholder": "b82b3ed6",
+    "last_opened_file_path": "C:/Uzinfocom/airplane_statistics-main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Uzinfocom\Cargo\conf" />
@@ -97,54 +107,8 @@
       <workItem from="1745386925056" duration="315000" />
       <workItem from="1745387248740" duration="11697000" />
       <workItem from="1745423712722" duration="38729000" />
-    </task>
-    <task id="LOCAL-00014" summary="update settings">
-      <option name="closed" value="true" />
-      <created>1745288679630</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1745288679630</updated>
-    </task>
-    <task id="LOCAL-00015" summary="update">
-      <option name="closed" value="true" />
-      <created>1745288785907</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1745288785907</updated>
-    </task>
-    <task id="LOCAL-00016" summary="add swagger settings for ursl">
-      <option name="closed" value="true" />
-      <created>1745288972288</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1745288972288</updated>
-    </task>
-    <task id="LOCAL-00017" summary="updapte">
-      <option name="closed" value="true" />
-      <created>1745301534830</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1745301534830</updated>
-    </task>
-    <task id="LOCAL-00018" summary="updapte admin.py">
-      <option name="closed" value="true" />
-      <created>1745301947476</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1745301947476</updated>
-    </task>
-    <task id="LOCAL-00019" summary="updata admin.py for order model">
-      <option name="closed" value="true" />
-      <created>1745302621601</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1745302621601</updated>
+      <workItem from="1745730060133" duration="5409000" />
+      <workItem from="1745799150052" duration="10009000" />
     </task>
     <task id="LOCAL-00020" summary="create serializers.py">
       <option name="closed" value="true" />
@@ -490,11 +454,82 @@
       <option name="project" value="LOCAL" />
       <updated>1745557554781</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="update">
+      <option name="closed" value="true" />
+      <created>1745582987310</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1745582987310</updated>
+    </task>
+    <task id="LOCAL-00064" summary="update">
+      <option name="closed" value="true" />
+      <created>1745583003185</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1745583003185</updated>
+    </task>
+    <task id="LOCAL-00065" summary="update">
+      <option name="closed" value="true" />
+      <created>1745583080364</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1745583080364</updated>
+    </task>
+    <task id="LOCAL-00066" summary="update">
+      <option name="closed" value="true" />
+      <created>1745583324620</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1745583324620</updated>
+    </task>
+    <task id="LOCAL-00067" summary="update">
+      <option name="closed" value="true" />
+      <created>1745584120953</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1745584120953</updated>
+    </task>
+    <task id="LOCAL-00068" summary="update">
+      <option name="closed" value="true" />
+      <created>1745818454111</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1745818454111</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/detached4" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updapte" />
@@ -519,10 +554,10 @@
     <MESSAGE value="update docker and compose" />
     <MESSAGE value="update swagger title" />
     <MESSAGE value="update name" />
-    <MESSAGE value="update" />
     <MESSAGE value="update country model" />
     <MESSAGE value="update  model" />
-    <option name="LAST_COMMIT_MESSAGE" value="update  model" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Cargo$currency_service.coverage" NAME="currency_service Coverage Results" MODIFIED="1745343933339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api/base" />
