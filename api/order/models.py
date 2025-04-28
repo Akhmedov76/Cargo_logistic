@@ -1,36 +1,14 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from api.base.base import CAR_TYPE, CAR_BODY_TYPE, Loading_choice, CURRENCY_CHOICES, \
+    when_loading, weekly_date
 from api.base.currency_service import get_currency_rate
 from api.base.mixins import TimeModelMixin
 from api.cargo_base.models import CargoType
 from api.country.models import District, Country, Region
 from api.services.models import ServicesModel
 from api.users.models import User
-
-when_loading = [
-    ('ready_to_download', 'Ready to download'),
-    ('permanent', 'Permanent'),
-    ('no_load', 'No load')
-]
-weekly_date = [
-    ('monday', 'Monday'),
-    ('tuesday', 'Tuesday'),
-    ('wednesday', 'Wednesday'),
-    ('thursday', 'Thursday'),
-    ('friday', 'Friday'),
-    ('saturday', 'Saturday'),
-    ('sunday', 'Sunday'),
-]
-CURRENCY_CHOICES = [
-    ('USD', 'USD'),
-    ('EUR', 'EUR'),
-    ('RUB', 'RUB'),
-    ('GBP', 'GBP'),
-    ('CNY', 'CNY'),
-    ('KZT', 'KZT'),
-    ('SUM', 'UZS')
-]
 
 
 class AddCargo(TimeModelMixin, models.Model):
@@ -45,7 +23,7 @@ class AddCargo(TimeModelMixin, models.Model):
 
     loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, related_name='loading')
     unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, related_name='unloading')
-    services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, null=True, related_name='services' )
+    services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, null=True, related_name='services')
     contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='cargo_roles')
     GPS_monitoring = models.BooleanField(default=False)
 
@@ -76,31 +54,6 @@ class AddCargo(TimeModelMixin, models.Model):
 
 
 class DeliveryForDrivers(TimeModelMixin, models.Model):
-    CAR_TYPE = [
-        ('truck', 'Truck'),
-        ('semitrailer', 'Semitrailer'),
-    ]
-    CAR_BODY_TYPE = [
-        ('hatchback', 'Hatchback'),
-        ('sedan', 'Sedan'),
-        ('van', 'Van'),
-        ('minivan', 'Minivan'),
-        ('pickup', 'Pickup'),
-        ('trailer', 'Trailer'),
-        ('flatbed', 'Flatbed'),
-        ('wagon', 'Wagon'),
-        ('bus', 'Bus'),
-        ('container', 'Container'),
-        ('auto transporter', 'Auto transporter'),
-        ('gas carrier', 'Gas carrier'),
-    ]
-    Loading_choice = [
-        ('top', 'Top'),
-        ('lateral', 'Lateral'),
-        ('back', 'Back'),
-        ('with full awning', 'With full awning'),
-        ('with the removal of crossbars', 'With the removal of crossbars'),
-    ]
     car_model = models.CharField(choices=CAR_TYPE, max_length=255, blank=True, null=True)
     if car_model == 'truck':
         car_body_type = models.CharField(choices=CAR_BODY_TYPE, max_length=255, )
@@ -121,9 +74,6 @@ class DeliveryForDrivers(TimeModelMixin, models.Model):
     price_in_UZS = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
 
     contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-
-    current_latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-    current_longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
 
     def __str__(self):
         return f"{self.contact} - {self.where} to {self.where_to}"

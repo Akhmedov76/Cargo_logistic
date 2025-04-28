@@ -4,13 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update">
+    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="add statistic get cargo using driver and where_where_to locations">
+      <change afterPath="$PROJECT_DIR$/api/base/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/country/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/country/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/cargo_base/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/country/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/country/migrations/0002_region_lat_region_lon_region_parent_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/country/migrations/0003_alter_district_options_alter_district_name_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0002_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0003_rename_cargo_addcargo_cargo_type.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0004_alter_addcargo_loading.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0005_deliveryfordrivers_current_latitude_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0006_addcargo_when_to.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0007_alter_addcargo_weight_alter_addcargo_when_to_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0008_alter_addcargo_height_alter_addcargo_length_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0009_alter_addcargo_bid_price.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/migrations/0010_alter_addcargo_services.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/services/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/users/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/users/migrations/0002_alter_user_role.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,25 +76,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.currency_service.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "git-widget-placeholder": "b82b3ed6",
-    "last_opened_file_path": "C:/Uzinfocom/airplane_statistics-main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.currency_service.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;6b80adbe&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Uzinfocom/airplane_statistics-main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Uzinfocom\Cargo\conf" />
@@ -108,23 +125,8 @@
       <workItem from="1745387248740" duration="11697000" />
       <workItem from="1745423712722" duration="38729000" />
       <workItem from="1745730060133" duration="5409000" />
-      <workItem from="1745799150052" duration="10009000" />
-    </task>
-    <task id="LOCAL-00020" summary="create serializers.py">
-      <option name="closed" value="true" />
-      <created>1745302648136</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1745302648136</updated>
-    </task>
-    <task id="LOCAL-00021" summary="update serializers.py">
-      <option name="closed" value="true" />
-      <created>1745304247608</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1745304247608</updated>
+      <workItem from="1745799150052" duration="17988000" />
+      <workItem from="1745833457736" duration="6750000" />
     </task>
     <task id="LOCAL-00022" summary="update">
       <option name="closed" value="true" />
@@ -502,7 +504,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745818454111</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="add statistic get cargo using driver and where_where_to locations">
+      <option name="closed" value="true" />
+      <created>1745821917111</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1745821917111</updated>
+    </task>
+    <task id="LOCAL-00070" summary="add statistic get cargo using driver and where_where_to locations">
+      <option name="closed" value="true" />
+      <created>1745821959698</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1745821959698</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,7 +550,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updapte" />
     <MESSAGE value="updapte admin.py" />
     <MESSAGE value="updata admin.py for order model" />
     <MESSAGE value="create serializers.py" />
@@ -557,7 +574,8 @@
     <MESSAGE value="update country model" />
     <MESSAGE value="update  model" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="add statistic get cargo using driver and where_where_to locations" />
+    <option name="LAST_COMMIT_MESSAGE" value="add statistic get cargo using driver and where_where_to locations" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Cargo$currency_service.coverage" NAME="currency_service Coverage Results" MODIFIED="1745343933339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api/base" />

@@ -1,14 +1,13 @@
-from random import choices
-
 from rest_framework import serializers
 
+from api.base.base import Loading_choice
 from api.country.models import District
 from api.order.models import AddCargo, DeliveryForDrivers
 from api.users.models import User
 
 
 class OrderCargoSerializer(serializers.ModelSerializer):
-    cargo = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    cargo_type = serializers.SlugRelatedField(read_only=True, slug_field='name')
     weight = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
     length = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
     width = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
@@ -27,7 +26,7 @@ class OrderCargoSerializer(serializers.ModelSerializer):
         model = AddCargo
         fields = [
             'id',
-            'cargo',
+            'cargo_type',
             'weight',
             'length',
             'width',
@@ -41,7 +40,8 @@ class OrderCargoSerializer(serializers.ModelSerializer):
             'GPS_monitoring',
             'bid_currency',
             'bid_price',
-            'price_in_UZS', ]
+            'price_in_UZS',
+        ]
 
     def create(self, validated_data):
         length = validated_data.get('length', 0)
@@ -63,7 +63,7 @@ class OrderCargoSerializer(serializers.ModelSerializer):
 
 class OrderCarrierSerializer(serializers.ModelSerializer):
     contact = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
-    loading = serializers.ChoiceField(choices=DeliveryForDrivers.Loading_choice, required=False)
+    loading = serializers.ChoiceField(choices=Loading_choice, required=False)
     body_volume = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
     where = serializers.SlugRelatedField(queryset=District.objects.all(), slug_field='name', required=False)
     where_to = serializers.SlugRelatedField(queryset=District.objects.all(), slug_field='name', required=False)
@@ -96,3 +96,4 @@ class OrderCarrierSerializer(serializers.ModelSerializer):
 class LocationInputSerializer(serializers.Serializer):
     loading_location = serializers.CharField(max_length=255)
     unloading_location = serializers.CharField(max_length=255)
+    volume = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True, help_text='m3')
