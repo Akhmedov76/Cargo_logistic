@@ -12,12 +12,15 @@ class User(TimeModelMixin, AbstractUser):
         ('cargo owner', 'Cargo owner'),
         ('forwarder', 'Forwarder'),
     )
-    role = models.CharField(choices=ROLE_CHOICES, blank=True, null=True)
+    role = models.CharField(choices=ROLE_CHOICES, blank=True, null=True, default='carrier')
     phone_number = models.CharField(help_text='+998 1234567', max_length=20, unique=True, null=True)
     is_agree = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.username} ({self.role})"
+
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
 
     class Meta:
         verbose_name = _('User')

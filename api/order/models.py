@@ -13,6 +13,16 @@ when_loading = [
     ('permanent', 'Permanent'),
     ('no_load', 'No load')
 ]
+weekly_date = [
+    ('every_day', 'Every day'),
+    ('monday', 'Monday'),
+    ('tuesday', 'Tuesday'),
+    ('wednesday', 'Wednesday'),
+    ('thursday', 'Thursday'),
+    ('friday', 'Friday'),
+    ('saturday', 'Saturday'),
+    ('sunday', 'Sunday'),
+]
 CURRENCY_CHOICES = [
     ('USD', 'USD'),
     ('EUR', 'EUR'),
@@ -32,6 +42,8 @@ class AddCargo(TimeModelMixin, models.Model):
     height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
     volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
     when = models.CharField(max_length=30, blank=True, choices=when_loading)
+    when_to = models.CharField(max_length=30, blank=True, choices=weekly_date, null=True)
+
     loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
                                 related_name='loading')
     unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True,
@@ -113,9 +125,26 @@ class DeliveryForDrivers(TimeModelMixin, models.Model):
 
     contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
+    current_latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    current_longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+
     def __str__(self):
         return f"{self.contact} - {self.where} to {self.where_to}"
 
     class Meta:
         verbose_name = _('Driver')
         verbose_name_plural = _('Drivers')
+
+    def save(self, *args, **kwargs):
+        if self.width and self.length and self.height:
+            self.volume = self.width * self.length * self.height
+        else:
+            self.volume = None
+
+        if self.bid_currency == 'SUM':
+            self.price_in_UZS = self.bid_price
+        else:
+            rate = get_currency_rate(self.bid_currency)
+            if rate and self.bid_price:
+                self.price_in_UZS = float(self.bid_price) * rate
+        super().save(*args, **kwargs)

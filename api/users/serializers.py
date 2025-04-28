@@ -37,10 +37,11 @@ class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, min_length=8,
                                      help_text=_("Password must be at least 8 characters long."))
     phone_number = serializers.CharField(required=True, help_text="e.g. +998901234567")
+    role = serializers.ChoiceField(choices=User.ROLE_CHOICES, required=True)
 
     class Meta:
         model = User
-        fields = ['email', 'password', 'phone_number']
+        fields = ['email', 'password', 'phone_number', 'role']
 
     def validate_email(self, value):
         if User.objects.filter(email=value).exists():

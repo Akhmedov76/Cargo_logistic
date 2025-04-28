@@ -13,7 +13,7 @@ class OrderCargoSerializer(serializers.ModelSerializer):
     length = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
     width = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
     height = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
-    
+
     services = serializers.SlugRelatedField(read_only=True, slug_field='name')
     loading = serializers.SlugRelatedField(read_only=True, slug_field='name')
     unloading = serializers.SlugRelatedField(read_only=True, slug_field='name')
@@ -65,9 +65,9 @@ class OrderCarrierSerializer(serializers.ModelSerializer):
     contact = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
     loading = serializers.ChoiceField(choices=DeliveryForDrivers.Loading_choice, required=False)
     body_volume = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
-    where = serializers.PrimaryKeyRelatedField(queryset=District.objects.all(), required=False)
-    where_to = serializers.PrimaryKeyRelatedField(queryset=District.objects.all(), required=False)
-    bid_currency = serializers.CharField(required=False, max_length=10)
+    where = serializers.SlugRelatedField(queryset=District.objects.all(), slug_field='name', required=False)
+    where_to = serializers.SlugRelatedField(queryset=District.objects.all(), slug_field='name', required=False)
+    bid_currency = serializers.CharField(max_length=10, required=False)
     bid_price = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
     price_in_UZS = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
     GPS_monitoring = serializers.BooleanField(required=False)
@@ -87,11 +87,7 @@ class OrderCarrierSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
-        instance = DeliveryForDrivers.objects.create(**validated_data)
-        return instance
+        return super().create(validated_data)
 
     def update(self, instance, validated_data):
-        for attr, value in validated_data.items():
-            setattr(instance, attr, value)
-        instance.save()
-        return instance
+        return super().update(instance, validated_data)
