@@ -9,6 +9,7 @@ from api.cargo_base.models import CargoType
 from api.country.models import District, Country, Region
 from api.services.models import ServicesModel
 from api.users.models import User
+from geopy.distance import geodesic
 
 
 class AddCargo(TimeModelMixin, models.Model):
@@ -17,21 +18,12 @@ class AddCargo(TimeModelMixin, models.Model):
     length = models.DecimalField(max_digits=12, decimal_places=2, help_text='m', null=True, blank=True)
     width = models.DecimalField(max_digits=12, decimal_places=2, help_text='m', null=True, blank=True)
     height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m', null=True, blank=True)
-    volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
+    volume = models.DecimalField(max_digits=12, decimal_places=2, help_text='m3', null=True, blank=True)
     when = models.CharField(max_length=30, blank=True, choices=when_loading)
     when_to = models.CharField(max_length=30, blank=True, choices=weekly_date, null=True)
 
     loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, related_name='loading')
     unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, related_name='unloading')
-
-    @property
-    def distance_in_km(self):
-        if self.loading and self.unloading and self.loading.coordinates and self.unloading.coordinates:
-            from geopy.distance import geodesic
-            loading_coords = tuple(map(float, self.loading.coordinates.split(',')))
-            unloading_coords = tuple(map(float, self.unloading.coordinates.split(',')))
-            return geodesic(loading_coords, unloading_coords).km
-        return None
 
     services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, null=True, related_name='services')
     contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='cargo_roles')
@@ -40,6 +32,14 @@ class AddCargo(TimeModelMixin, models.Model):
     bid_currency = models.CharField(max_length=10, choices=CURRENCY_CHOICES, default='SUM')
     bid_price = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
     price_in_UZS = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+
+    @property
+    def distance_km(self):
+        if self.loading and self.unloading and self.loading.coordinates and self.unloading.coordinates:
+            loading_coords = tuple(map(float, self.loading.coordinates.split(',')))
+            unloading_coords = tuple(map(float, self.unloading.coordinates.split(',')))
+            return geodesic(loading_coords, unloading_coords).km
+        return None
 
     def __str__(self):
         return f"{self.contact} - {self.loading} to {self.unloading}"
@@ -73,7 +73,7 @@ class DeliveryForDrivers(TimeModelMixin, models.Model):
     length = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
     width = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
     height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
-    volume = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, help_text='m3')
+    volume = models.DecimalField(max_digits=12, decimal_places=2, help_text='m3')
     GPS_monitoring = models.BooleanField(default=False)
     when = models.CharField(max_length=30, blank=True, choices=when_loading)
     where = models.ForeignKey(District, on_delete=models.CASCADE, related_name='delivery_where')

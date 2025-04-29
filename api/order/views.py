@@ -7,15 +7,9 @@ from rest_framework.permissions import IsAuthenticated
 
 from api.base.paginator import CustomPagination
 from api.order.models import AddCargo, DeliveryForDrivers
-from api.order.serializers import OrderCargoSerializer, OrderCarrierSerializer, LocationInputSerializer
-from api.order.services import match_where_where_to_driver
-
-
-# def your_view(request):
-#     from django.conf import settings
-#     return render(request, '', {
-#         'GOOGLE_MAPS_API_KEY': settings.GOOGLE_MAPS_API_KEY
-#     })
+from api.order.serializers import OrderCargoSerializer, OrderCarrierSerializer, LocationInputSerializer, \
+    OrderCargoCreateSerializer
+from api.order.services import match_where_where_to_driver, get_locations_cargo
 
 
 class CargoRequestView(viewsets.GenericViewSet, viewsets.mixins.ListModelMixin):
@@ -24,22 +18,41 @@ class CargoRequestView(viewsets.GenericViewSet, viewsets.mixins.ListModelMixin):
     permission_classes = [IsAuthenticated]
     pagination_class = CustomPagination
 
-    @action(detail=False, methods=['get'], url_path='get-cargo-owner')
+    @swagger_auto_schema(query_serializer=OrderCargoSerializer)
+    @action(detail=False, methods=['GET'], url_path='get-cargo')
     def get_cargo_list(self, request, *args, **kwargs):
+        if request.user.is_staff:
+            queryset = AddCargo.objects.all()
+        else:
+            queryset = AddCargo.objects.filter(contact=request.user)
         paginator = self.pagination_class()
-        result_page = paginator.paginate_queryset(self.queryset, request)
+        result_page = paginator.paginate_queryset(queryset, request)
         serializer = self.get_serializer(result_page, many=True)
         return paginator.get_paginated_response(serializer.data)
 
+    @swagger_auto_schema(request_body=OrderCargoCreateSerializer)
+    @action(detail=False, methods=['POST'], url_path='create-cargo')
+    def create_cargo(self, request):
+        serializer = OrderCargoCreateSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        validated_data = serializer.validated_data
+
+        cargo = AddCargo.objects.create(
+            contact=request.user,
+            **validated_data
+        )
+        cargo.save()
+        return Response({"message": "Cargo created successfully"}, status=status.HTTP_201_CREATED)
+
     @swagger_auto_schema(request_body=LocationInputSerializer)
-    @action(detail=False, methods=['POST'], url_path='cargo/get-matched-drivers')
+    @action(detail=False, methods=['POST'], url_path='search-matched-drivers')
     def get_where_where_to(self, request):
         serializer = LocationInputSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         validated_data = serializer.validated_data
 
-        loading_location = validated_data['loading_location']
-        unloading_location = validated_data['unloading_location']
+        loading_location = validated_data.get('loading_location')
+        unloading_location = validated_data.get('unloading_location')
         volume = validated_data.get('volume')
         if volume in ["", None]:
             volume = None
@@ -80,6 +93,57 @@ class CargoRequestView(viewsets.GenericViewSet, viewsets.mixins.ListModelMixin):
 
         if not datas:
             return Response({"message": "No matched drivers found."}, status=status.HTTP_404_NOT_FOUND)
+
+        paginator = self.pagination_class()
+        result_page = paginator.paginate_queryset(datas, request)
+        return paginator.get_paginated_response(result_page)
+
+    @swagger_auto_schema(request_body=LocationInputSerializer)
+    @action(detail=False, methods=['POST'], url_path='search-cargo-by-locations')
+    def get_cargo_by_where_where_to(self, request):
+        serializer = LocationInputSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        validated_data = serializer.validated_data
+
+        loading_location = validated_data.get('loading_location')
+        unloading_location = validated_data.get('unloading_location')
+        volume = validated_data.get('volume')
+        if volume in ["", None]:
+            volume = None
+
+        cargo_queryset = AddCargo.objects.filter(
+            loading__name=loading_location,
+            unloading__name=unloading_location
+        )
+        if volume is not None:
+            cargo_queryset = cargo_queryset.filter(volume__gte=volume)
+
+        cargo = cargo_queryset.first()
+
+        get_cargo = get_locations_cargo(cargo)
+
+        datas = [
+            {
+                'cargo_id': cargo.id,
+                'contact': cargo.contact.full_name() if cargo.contact else None,
+                'phone_number': cargo.contact.phone_number if cargo.contact else None,
+                'loading': cargo.loading.name if cargo.loading else None,
+                'unloading': cargo.unloading.name if cargo.unloading else None,
+                'caro_type': cargo.cargo_type.name if cargo.cargo_type else None,
+                'services': cargo.services.name if cargo.services else None,
+                'GPS_monitoring': cargo.GPS_monitoring if cargo.GPS_monitoring else None,
+                'bid_currency': cargo.bid_currency if cargo.bid_currency else None,
+                'bid_price': cargo.bid_price if cargo.bid_price else None,
+                'price_in_UZS': cargo.price_in_UZS if cargo.price_in_UZS else None,
+                'weight': cargo.weight if cargo.weight else None,
+                'volume': cargo.volume if cargo.volume else None,
+                'length': cargo.length if cargo.length else None,
+                'width': cargo.width if cargo.width else None,
+                'height': cargo.height if cargo.height else None,
+
+
+            } for cargo in get_cargo
+        ]
 
         paginator = self.pagination_class()
         result_page = paginator.paginate_queryset(datas, request)

@@ -1,6 +1,6 @@
 from api.order.models import DeliveryForDrivers, AddCargo
 
-#
+
 # def match_cargo_to_driver(cargo):
 #     filters = {}
 #
@@ -33,3 +33,14 @@ def match_where_where_to_driver(cargo):
 
     matched_cargo = DeliveryForDrivers.objects.filter(**filters)
     return matched_cargo
+
+
+def get_locations_cargo(cargo):
+    filters = {}
+    if cargo.loading is not None:
+        filters['loading'] = cargo.loading
+    if cargo.unloading is not None:
+        filters['unloading'] = cargo.unloading
+
+    get_cargo = AddCargo.objects.filter(**filters)
+    return get_cargo

@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="add statistic get cargo using driver and where_where_to locations">
+      <change afterPath="$PROJECT_DIR$/api/base/convert_price.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/base/geodesic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,12 +64,13 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "HTTP Request.generated-requests | #1.executor": "Run",
+    "Python.convert_price.executor": "Run",
     "Python.currency_service.executor": "Run",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "git-widget-placeholder": "aac25882",
+    "git-widget-placeholder": "5002964a",
     "last_opened_file_path": "C:/Uzinfocom/airplane_statistics-main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -83,12 +89,36 @@
       <recent name="C:\Uzinfocom\Cargo" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.convert_price">
     <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_price" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Cargo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/api/base" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/api/base/convert_price.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.convert_price" />
         <item itemvalue="HTTP Request.generated-requests | #1" />
       </list>
     </recent_temporary>
@@ -116,15 +146,9 @@
       <workItem from="1745423712722" duration="38729000" />
       <workItem from="1745730060133" duration="5409000" />
       <workItem from="1745799150052" duration="17988000" />
-      <workItem from="1745833457736" duration="11718000" />
-    </task>
-    <task id="LOCAL-00024" summary="update">
-      <option name="closed" value="true" />
-      <created>1745306147787</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1745306147787</updated>
+      <workItem from="1745833457736" duration="14784000" />
+      <workItem from="1745860951002" duration="1313000" />
+      <workItem from="1745900251884" duration="7647000" />
     </task>
     <task id="LOCAL-00025" summary="update">
       <option name="closed" value="true" />
@@ -510,7 +534,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745844770804</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="add statistic get cargo using driver and where_where_to locations">
+      <option name="closed" value="true" />
+      <created>1745845328950</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1745845328951</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,5 +601,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Cargo$currency_service.coverage" NAME="currency_service Coverage Results" MODIFIED="1745343933339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api/base" />
+    <SUITE FILE_PATH="coverage/Cargo$convert_price.coverage" NAME="convert_price Coverage Results" MODIFIED="1745903277204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api/base" />
   </component>
 </project>
