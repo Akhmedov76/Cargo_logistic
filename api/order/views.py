@@ -7,8 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from api.base.paginator import CustomPagination
 from api.order.models import AddCargo, DeliveryForDrivers
-from api.order.serializers import OrderCargoSerializer, OrderCarrierSerializer, LocationInputSerializer, \
-    OrderCargoCreateSerializer
+from api.order.serializers import OrderCargoSerializer, OrderCarrierSerializer, LocationInputSerializer
 from api.order.services import match_where_where_to_driver, get_locations_cargo
 
 
@@ -30,19 +29,16 @@ class CargoRequestView(viewsets.GenericViewSet, viewsets.mixins.ListModelMixin):
         serializer = self.get_serializer(result_page, many=True)
         return paginator.get_paginated_response(serializer.data)
 
-    @swagger_auto_schema(request_body=OrderCargoCreateSerializer)
+    @swagger_auto_schema(request_body=OrderCargoSerializer)
     @action(detail=False, methods=['POST'], url_path='create-cargo')
     def create_cargo(self, request):
-        serializer = OrderCargoCreateSerializer(data=request.data)
+        serializer = OrderCargoSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         validated_data = serializer.validated_data
 
-        cargo = AddCargo.objects.create(
-            contact=request.user,
-            **validated_data
-        )
-        cargo.save()
-        return Response({"message": "Cargo created successfully"}, status=status.HTTP_201_CREATED)
+        cargo = AddCargo.objects.create(**validated_data, contact=request.user)
+        response_serializer = OrderCargoSerializer(cargo)
+        return Response(response_serializer.data, status=status.HTTP_201_CREATED)
 
     @swagger_auto_schema(request_body=LocationInputSerializer)
     @action(detail=False, methods=['POST'], url_path='search-matched-drivers')
@@ -140,7 +136,6 @@ class CargoRequestView(viewsets.GenericViewSet, viewsets.mixins.ListModelMixin):
                 'length': cargo.length if cargo.length else None,
                 'width': cargo.width if cargo.width else None,
                 'height': cargo.height if cargo.height else None,
-
 
             } for cargo in get_cargo
         ]

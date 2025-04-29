@@ -10,16 +10,16 @@ from api.users.models import User
 
 class OrderCargoSerializer(serializers.ModelSerializer):
     cargo_type = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    services = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    loading = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    unloading = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    contact = serializers.SlugRelatedField(read_only=True, slug_field='email')
     weight = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
     length = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
     width = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
     height = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
     volume = serializers.DecimalField(max_digits=12, decimal_places=2, required=False)
 
-    services = serializers.SlugRelatedField(read_only=True, slug_field='name')
-    loading = serializers.SlugRelatedField(read_only=True, slug_field='name')
-    unloading = serializers.SlugRelatedField(read_only=True, slug_field='name')
-    contact = serializers.SlugRelatedField(read_only=True, slug_field='email')
     bid_currency = serializers.CharField(required=False, max_length=10)
     bid_price = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
     price_in_UZS = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
@@ -31,22 +31,22 @@ class OrderCargoSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'cargo_type',
-            'weight',
-            'length',
-            'width',
-            'height',
-            'volume',
-            'when',
-            'when_to',
             'loading',
             'unloading',
             'services',
             'contact',
+            'when',
+            'when_to',
             'GPS_monitoring',
             'bid_currency',
             'bid_price',
             'price_in_UZS',
-            'distance_km'
+            'distance_km',
+            'weight',
+            'volume',
+            'length',
+            'width',
+            'height',
         ]
 
     def get_distance_in_km(self, obj):
@@ -70,15 +70,11 @@ class OrderCargoSerializer(serializers.ModelSerializer):
         return instance
 
 
-class OrderCargoCreateSerializer(serializers.ModelSerializer):
-    cargo_type = serializers.SlugRelatedField(read_only=True, slug_field='name')
-    services = serializers.SlugRelatedField(read_only=True, slug_field='name')
-    loading = serializers.SlugRelatedField(read_only=True, slug_field='name')
-    unloading = serializers.SlugRelatedField(read_only=True, slug_field='name')
-
-    class Meta:
-        model = AddCargo
-        exclude = ['contact', 'price_in_UZS', 'volume']
+class LocationInputSerializer(serializers.Serializer):
+    loading_location = serializers.CharField(max_length=255)
+    unloading_location = serializers.CharField(max_length=255)
+    volume = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+    distance_in_km = serializers.SerializerMethodField()
 
 
 class OrderCarrierSerializer(serializers.ModelSerializer):
@@ -111,10 +107,3 @@ class OrderCarrierSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         return super().update(instance, validated_data)
-
-
-class LocationInputSerializer(serializers.Serializer):
-    loading_location = serializers.CharField(max_length=255)
-    unloading_location = serializers.CharField(max_length=255)
-    volume = serializers.CharField(required=False, allow_blank=True, allow_null=True)
-    distance_in_km = serializers.SerializerMethodField()

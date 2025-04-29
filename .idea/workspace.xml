@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="add statistic get cargo using driver and where_where_to locations">
-      <change afterPath="$PROJECT_DIR$/api/base/convert_price.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/base/geodesic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +67,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "git-widget-placeholder": "5002964a",
+    "git-widget-placeholder": "75f87f4c",
     "last_opened_file_path": "C:/Uzinfocom/airplane_statistics-main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -148,15 +145,7 @@
       <workItem from="1745799150052" duration="17988000" />
       <workItem from="1745833457736" duration="14784000" />
       <workItem from="1745860951002" duration="1313000" />
-      <workItem from="1745900251884" duration="7647000" />
-    </task>
-    <task id="LOCAL-00025" summary="update">
-      <option name="closed" value="true" />
-      <created>1745307800245</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1745307800245</updated>
+      <workItem from="1745900251884" duration="16461000" />
     </task>
     <task id="LOCAL-00026" summary="update">
       <option name="closed" value="true" />
@@ -542,7 +531,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745845328951</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="add statistic get cargo using driver and where_where_to locations">
+      <option name="closed" value="true" />
+      <created>1745907964731</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1745907964744</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

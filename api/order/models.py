@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from api.base.base import CAR_TYPE, CAR_BODY_TYPE, Loading_choice, CURRENCY_CHOICES, \
-    when_loading, weekly_date
+    when_loading
 from api.base.currency_service import get_currency_rate
 from api.base.mixins import TimeModelMixin
 from api.cargo_base.models import CargoType
@@ -14,13 +14,14 @@ from geopy.distance import geodesic
 
 class AddCargo(TimeModelMixin, models.Model):
     cargo_type = models.ForeignKey(CargoType, on_delete=models.CASCADE, null=True, blank=True)
+
     weight = models.DecimalField(max_digits=12, decimal_places=2, help_text='kg', null=True, blank=True)
     length = models.DecimalField(max_digits=12, decimal_places=2, help_text='m', null=True, blank=True)
     width = models.DecimalField(max_digits=12, decimal_places=2, help_text='m', null=True, blank=True)
     height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m', null=True, blank=True)
     volume = models.DecimalField(max_digits=12, decimal_places=2, help_text='m3', null=True, blank=True)
     when = models.CharField(max_length=30, blank=True, choices=when_loading)
-    when_to = models.CharField(max_length=30, blank=True, choices=weekly_date, null=True)
+    when_to = models.DateTimeField(blank=True, null=True)
 
     loading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, related_name='loading')
     unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, related_name='unloading')
