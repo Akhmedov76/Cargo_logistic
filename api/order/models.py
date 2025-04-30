@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from api.base.base import CAR_TYPE, CAR_BODY_TYPE, Loading_choice, CURRENCY_CHOICES, \
+from api.base.base import CAR_TYPE, Loading_choice, CURRENCY_CHOICES, \
     when_loading
 from api.base.currency_service import get_currency_rate
 from api.base.mixins import TimeModelMixin
@@ -27,6 +27,7 @@ class AddCargo(TimeModelMixin, models.Model):
     unloading = models.ForeignKey(District, on_delete=models.CASCADE, null=True, related_name='unloading')
 
     services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, null=True, related_name='services')
+    loading_body = models.CharField(choices=Loading_choice, max_length=50, blank=True, null=True)
     contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='cargo_roles')
     GPS_monitoring = models.BooleanField(default=False)
 
@@ -65,16 +66,15 @@ class AddCargo(TimeModelMixin, models.Model):
 
 
 class DeliveryForDrivers(TimeModelMixin, models.Model):
-    car_model = models.CharField(choices=CAR_TYPE, max_length=255, blank=True, null=True)
-    if car_model == 'truck':
-        car_body_type = models.CharField(choices=CAR_BODY_TYPE, max_length=255, )
-
+    services = models.ForeignKey(ServicesModel, on_delete=models.CASCADE, null=True, related_name='driver_services')
     loading = models.CharField(choices=Loading_choice, max_length=255, blank=True, null=True)
+    car_model = models.CharField(choices=CAR_TYPE, max_length=255, blank=True, null=True)
+
     weight = models.DecimalField(max_digits=12, decimal_places=2, help_text='kg')
     length = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
     width = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
     height = models.DecimalField(max_digits=12, decimal_places=2, help_text='m')
-    volume = models.DecimalField(max_digits=12, decimal_places=2, help_text='m3')
+    volume = models.DecimalField(max_digits=12, decimal_places=2, help_text='m3', blank=True, null=True)
     GPS_monitoring = models.BooleanField(default=False)
     when = models.CharField(max_length=30, blank=True, choices=when_loading)
     where = models.ForeignKey(District, on_delete=models.CASCADE, related_name='delivery_where')

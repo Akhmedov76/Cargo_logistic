@@ -1,22 +1,6 @@
-
-
 CAR_TYPE = [
     ('truck', 'Truck'),
     ('semitrailer', 'Semitrailer'),
-]
-CAR_BODY_TYPE = [
-    ('hatchback', 'Hatchback'),
-    ('sedan', 'Sedan'),
-    ('van', 'Van'),
-    ('minivan', 'Minivan'),
-    ('pickup', 'Pickup'),
-    ('trailer', 'Trailer'),
-    ('flatbed', 'Flatbed'),
-    ('wagon', 'Wagon'),
-    ('bus', 'Bus'),
-    ('container', 'Container'),
-    ('auto transporter', 'Auto transporter'),
-    ('gas carrier', 'Gas carrier'),
 ]
 Loading_choice = [
     ('top', 'Top'),

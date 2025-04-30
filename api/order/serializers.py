@@ -11,6 +11,7 @@ from api.users.models import User
 class OrderCargoSerializer(serializers.ModelSerializer):
     cargo_type = serializers.SlugRelatedField(read_only=True, slug_field='name')
     services = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    loading_body = serializers.ChoiceField(choices=Loading_choice, required=False)
     loading = serializers.SlugRelatedField(read_only=True, slug_field='name')
     unloading = serializers.SlugRelatedField(read_only=True, slug_field='name')
     contact = serializers.SlugRelatedField(read_only=True, slug_field='email')
@@ -34,6 +35,7 @@ class OrderCargoSerializer(serializers.ModelSerializer):
             'loading',
             'unloading',
             'services',
+            'loading_body',
             'contact',
             'when',
             'when_to',
@@ -80,9 +82,8 @@ class LocationInputSerializer(serializers.Serializer):
 class OrderCarrierSerializer(serializers.ModelSerializer):
     contact = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
     loading = serializers.ChoiceField(choices=Loading_choice, required=False)
-    body_volume = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
-    where = serializers.SlugRelatedField(queryset=District.objects.all(), slug_field='name', required=False)
-    where_to = serializers.SlugRelatedField(queryset=District.objects.all(), slug_field='name', required=False)
+    volume = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
+
     bid_currency = serializers.CharField(max_length=10, required=False)
     bid_price = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
     price_in_UZS = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, allow_null=True)
@@ -93,9 +94,7 @@ class OrderCarrierSerializer(serializers.ModelSerializer):
         fields = [
             'contact',
             'loading',
-            'body_volume',
-            'where',
-            'where_to',
+            'volume',
             'bid_currency',
             'bid_price',
             'price_in_UZS',

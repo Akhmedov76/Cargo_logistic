@@ -2,10 +2,11 @@ from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from api.users.views import UserListCreateView, RegisterView, LoginView
+from api.users.views import UserListCreateView, RegisterView, LoginView, UserCreateForDriverView
 
 router = SimpleRouter()
 router.register(r'users', UserListCreateView, basename='users')
+router.register(r'driver', UserCreateForDriverView, basename='driver')
 
 urlpatterns = [
     path('', include(router.urls)),

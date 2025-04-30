@@ -5,10 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="add statistic get cargo using driver and where_where_to locations">
+      <change afterPath="$PROJECT_DIR$/api/chats/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/chats/signals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/chats/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/chat.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/chats.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Cargo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Cargo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/base/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/base/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/order/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/users/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +41,8 @@
       <list>
         <option value="Dockerfile" />
         <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -67,8 +87,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "git-widget-placeholder": "75f87f4c",
+    "git-widget-placeholder": "390fefc9",
     "last_opened_file_path": "C:/Uzinfocom/airplane_statistics-main",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -145,15 +166,8 @@
       <workItem from="1745799150052" duration="17988000" />
       <workItem from="1745833457736" duration="14784000" />
       <workItem from="1745860951002" duration="1313000" />
-      <workItem from="1745900251884" duration="16461000" />
-    </task>
-    <task id="LOCAL-00026" summary="update">
-      <option name="closed" value="true" />
-      <created>1745308850100</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1745308850100</updated>
+      <workItem from="1745900251884" duration="28228000" />
+      <workItem from="1745986183622" duration="9955000" />
     </task>
     <task id="LOCAL-00027" summary="update">
       <option name="closed" value="true" />
@@ -539,7 +553,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745907964744</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="add statistic get cargo using driver and where_where_to locations">
+      <option name="closed" value="true" />
+      <created>1745920190905</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1745920190905</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework_simplejwt',
+    'channels',
 
     'rest_framework',
     'rest_framework.authtoken',
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'api.order',
     'api.country',
     'api.cargo_base',
+    'api.chats'
 ]
 
 MIDDLEWARE = [
@@ -136,7 +138,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Use custom user model
 AUTH_USER_MODEL = 'users.User'
 
-# ASGI_APPLICATION = 'conf.asgi.application'
+ASGI_APPLICATION = 'conf.asgi.application'
 
 # rest-framework configuration
 REST_FRAMEWORK = {
