@@ -4,29 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="add statistic get cargo using driver and where_where_to locations">
-      <change afterPath="$PROJECT_DIR$/api/chats/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/chats/signals.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/chats/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/chat.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/chats.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Cargo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Cargo.iml" afterDir="false" />
+    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="add chats app">
+      <change afterPath="$PROJECT_DIR$/api/chats/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/base/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/base/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/services.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/order/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/base/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/base/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/chats/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/chats/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/chats/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/chats/signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/chats/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/chats/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/users/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chat.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,8 +75,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "git-widget-placeholder": "390fefc9",
-    "last_opened_file_path": "C:/Uzinfocom/airplane_statistics-main",
+    "git-widget-placeholder": "ad2ff0e7",
+    "last_opened_file_path": "C:/Uzinfocom/perfect-university-site-back",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -167,23 +155,7 @@
       <workItem from="1745833457736" duration="14784000" />
       <workItem from="1745860951002" duration="1313000" />
       <workItem from="1745900251884" duration="28228000" />
-      <workItem from="1745986183622" duration="9955000" />
-    </task>
-    <task id="LOCAL-00027" summary="update">
-      <option name="closed" value="true" />
-      <created>1745309042323</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1745309042323</updated>
-    </task>
-    <task id="LOCAL-00028" summary="update">
-      <option name="closed" value="true" />
-      <created>1745316131295</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1745316131295</updated>
+      <workItem from="1745986183622" duration="22296000" />
     </task>
     <task id="LOCAL-00029" summary="update">
       <option name="closed" value="true" />
@@ -561,7 +533,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745920190905</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="add chats app">
+      <option name="closed" value="true" />
+      <created>1746002800720</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1746002800720</updated>
+    </task>
+    <task id="LOCAL-00077" summary="add chats app">
+      <option name="closed" value="true" />
+      <created>1746018432573</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1746018432573</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -591,7 +579,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updapte admin.py" />
     <MESSAGE value="updata admin.py for order model" />
     <MESSAGE value="create serializers.py" />
     <MESSAGE value="update serializers.py" />
@@ -616,7 +603,8 @@
     <MESSAGE value="update  model" />
     <MESSAGE value="update" />
     <MESSAGE value="add statistic get cargo using driver and where_where_to locations" />
-    <option name="LAST_COMMIT_MESSAGE" value="add statistic get cargo using driver and where_where_to locations" />
+    <MESSAGE value="add chats app" />
+    <option name="LAST_COMMIT_MESSAGE" value="add chats app" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Cargo$currency_service.coverage" NAME="currency_service Coverage Results" MODIFIED="1745343933339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api/base" />
