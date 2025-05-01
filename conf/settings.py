@@ -140,15 +140,14 @@ AUTH_USER_MODEL = 'users.User'
 
 ASGI_APPLICATION = 'conf.asgi.application'
 
-# CHANNEL_LAYERS = {
-#     'default': {
-#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-#         'CONFIG': {
-#             "hosts": [CHANNEL_REDIS_HOST],
-#             "symmetric_encryption_keys": [SECRET_KEY],
-#         },
-#     },
-# }
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # rest-framework configuration
 REST_FRAMEWORK = {
