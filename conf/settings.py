@@ -140,6 +140,16 @@ AUTH_USER_MODEL = 'users.User'
 
 ASGI_APPLICATION = 'conf.asgi.application'
 
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#         'CONFIG': {
+#             "hosts": [CHANNEL_REDIS_HOST],
+#             "symmetric_encryption_keys": [SECRET_KEY],
+#         },
+#     },
+# }
+
 # rest-framework configuration
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%d-%m-%Y %H:%M:%S",
@@ -188,8 +198,8 @@ SWAGGER_SETTINGS = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=10),
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": False,

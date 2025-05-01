@@ -15,5 +15,14 @@ class MessageAdmin(admin.ModelAdmin):
     ordering = ('chat', 'sender')
 
 
-admin.site.register(Chat)
-admin.site.register(Contact)
+@admin.register(Chat)
+class ChatAdmin(admin.ModelAdmin):
+    list_display = ('id', 'class_name', 'created_at', 'updated_at')
+
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'contact')
+
+# admin.site.register(Chat)
+# admin.site.register(Contact)

@@ -1,18 +1,12 @@
 from rest_framework import serializers
-from .models import Chat, Message, Contact
+from .models import Chat, Message, Contact, Profile
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'username', ]
-
-
 class MessageSerializer(serializers.ModelSerializer):
-    sender = UserSerializer(read_only=True)
+    sender = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
 
     class Meta:
         model = Message
@@ -20,9 +14,22 @@ class MessageSerializer(serializers.ModelSerializer):
 
 
 class ChatSerializer(serializers.ModelSerializer):
-    participants = UserSerializer(many=True, read_only=True)
+    participants = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), many=True)
     messages = MessageSerializer(many=True, read_only=True)
 
     class Meta:
         model = Chat
         fields = ['id', 'participants', 'created_at', 'messages']
+        read_only_fields = ['messages']
+
+
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = ['id', 'user', 'contact']
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['id', 'user', 'image']

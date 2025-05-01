@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="add chats app">
-      <change afterPath="$PROJECT_DIR$/api/chats/services.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/chats/consumers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/conf/routing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/connect4.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/connect4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/connect4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/base/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/base/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/chats/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/chats/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/chats/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/chats/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/chats/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/chats/signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/chats/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/chats/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/chats/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/chats/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chat.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +29,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Dockerfile" />
-        <option value="HTML File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -75,8 +76,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "git-widget-placeholder": "ad2ff0e7",
-    "last_opened_file_path": "C:/Uzinfocom/perfect-university-site-back",
+    "git-widget-placeholder": "f03cbf8e",
+    "last_opened_file_path": "C:/Uzinfocom/Cargo/templates",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -89,6 +90,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Uzinfocom\Cargo\templates" />
       <recent name="C:\Uzinfocom\Cargo\conf" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -155,15 +157,7 @@
       <workItem from="1745833457736" duration="14784000" />
       <workItem from="1745860951002" duration="1313000" />
       <workItem from="1745900251884" duration="28228000" />
-      <workItem from="1745986183622" duration="22296000" />
-    </task>
-    <task id="LOCAL-00029" summary="update">
-      <option name="closed" value="true" />
-      <created>1745319509571</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1745319509571</updated>
+      <workItem from="1745986183622" duration="32203000" />
     </task>
     <task id="LOCAL-00030" summary="update register view for user">
       <option name="closed" value="true" />
@@ -549,7 +543,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746018432573</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="add chats app">
+      <option name="closed" value="true" />
+      <created>1746034959130</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1746034959130</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
