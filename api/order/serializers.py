@@ -51,7 +51,7 @@ class OrderCargoSerializer(serializers.ModelSerializer):
             'height',
         ]
 
-    def get_distance_in_km(self, obj):
+    def get_distance_km(self, obj):
         return obj.distance_in_km
 
     def create(self, validated_data):
@@ -77,6 +77,18 @@ class LocationInputSerializer(serializers.Serializer):
     unloading_location = serializers.CharField(max_length=255)
     volume = serializers.CharField(required=False, allow_blank=True, allow_null=True)
     distance_in_km = serializers.SerializerMethodField()
+
+    class Meta:
+        model = AddCargo
+        fields = [
+            'loading_location',
+            'unloading_location',
+            'volume',
+            'distance_in_km',
+        ]
+
+    def get_distance_in_km(self, obj):
+        return obj.distance_in_km
 
 
 class OrderCarrierSerializer(serializers.ModelSerializer):
