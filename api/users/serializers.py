@@ -22,10 +22,10 @@ class UserCreateSerializer(serializers.Serializer):
     passport_number = serializers.CharField(required=True)
     date_given = serializers.DateField(required=True)
     given_by_whom = serializers.CharField(required=True)
-    passport_file = serializers.FileField(required=True)
+    passport_file = serializers.FileField(required=False)
     drivers_license_serial_number = serializers.CharField(required=True)
     date_of_issue_license = serializers.DateField(required=True)
-    drivers_license_file = serializers.FileField(required=True)
+    drivers_license_file = serializers.FileField(required=False)
 
     class Meta:
         model = User
