@@ -101,5 +101,7 @@ class UserCreateForDriverView(viewsets.GenericViewSet):
             date_of_issue_license=validated_data.get('date_of_issue_license'),
             drivers_license_file=validated_data.get('drivers_license_file'),
         )
+        if user.phone_number and not user.phone_number.startswith('+998'):
+            user.phone_number = '+998' + user.phone_number
         response_serializer = UserCreateSerializer(user)
         return Response(response_serializer.data, status=status.HTTP_201_CREATED)
