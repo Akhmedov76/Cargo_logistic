@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="add chats app">
+    <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/chats/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/chats/consumers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/routing.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/chats.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/connect4.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/connect4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/connect4.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/js.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,34 +62,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "HTTP Request.generated-requests | #1.executor": "Run",
-    "Python.convert_price.executor": "Run",
-    "Python.currency_service.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "git-widget-placeholder": "b26e0a26",
-    "last_opened_file_path": "C:/Uzinfocom/Cargo/templates",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;HTTP Request.generated-requests | #1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.convert_price.executor&quot;: &quot;Run&quot;,
+    &quot;Python.currency_service.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;9573be0b&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Uzinfocom&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Uzinfocom\Cargo\templates" />
       <recent name="C:\Uzinfocom\Cargo\conf" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Uzinfocom\Cargo\api\chats" />
       <recent name="C:\Uzinfocom\Cargo" />
     </key>
   </component>
@@ -158,63 +154,9 @@
       <workItem from="1745833457736" duration="14784000" />
       <workItem from="1745860951002" duration="1313000" />
       <workItem from="1745900251884" duration="28228000" />
-      <workItem from="1745986183622" duration="34235000" />
-    </task>
-    <task id="LOCAL-00031" summary="update">
-      <option name="closed" value="true" />
-      <created>1745319723096</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1745319723096</updated>
-    </task>
-    <task id="LOCAL-00032" summary="add translate">
-      <option name="closed" value="true" />
-      <created>1745319950548</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1745319950548</updated>
-    </task>
-    <task id="LOCAL-00033" summary="update">
-      <option name="closed" value="true" />
-      <created>1745320007171</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1745320007171</updated>
-    </task>
-    <task id="LOCAL-00034" summary="update login serializers.py">
-      <option name="closed" value="true" />
-      <created>1745320811600</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1745320811600</updated>
-    </task>
-    <task id="LOCAL-00035" summary="update views for user model">
-      <option name="closed" value="true" />
-      <created>1745320852989</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1745320852989</updated>
-    </task>
-    <task id="LOCAL-00036" summary="update views for user model">
-      <option name="closed" value="true" />
-      <created>1745322476285</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1745322476285</updated>
-    </task>
-    <task id="LOCAL-00037" summary="update views for user model">
-      <option name="closed" value="true" />
-      <created>1745322711868</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1745322711868</updated>
+      <workItem from="1745986183622" duration="49115000" />
+      <workItem from="1746507980802" duration="6301000" />
+      <workItem from="1746516956338" duration="5809000" />
     </task>
     <task id="LOCAL-00038" summary="add token refresh">
       <option name="closed" value="true" />
@@ -552,7 +494,63 @@
       <option name="project" value="LOCAL" />
       <updated>1746081445006</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="add chats app">
+      <option name="closed" value="true" />
+      <created>1746083484719</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1746083484719</updated>
+    </task>
+    <task id="LOCAL-00081" summary="update">
+      <option name="closed" value="true" />
+      <created>1746510099783</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1746510099783</updated>
+    </task>
+    <task id="LOCAL-00082" summary="update">
+      <option name="closed" value="true" />
+      <created>1746510119758</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1746510119758</updated>
+    </task>
+    <task id="LOCAL-00083" summary="update">
+      <option name="closed" value="true" />
+      <created>1746514062391</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1746514062391</updated>
+    </task>
+    <task id="LOCAL-00084" summary="update">
+      <option name="closed" value="true" />
+      <created>1746514086283</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1746514086283</updated>
+    </task>
+    <task id="LOCAL-00085" summary="update">
+      <option name="closed" value="true" />
+      <created>1746514104245</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1746514104245</updated>
+    </task>
+    <task id="LOCAL-00086" summary="update">
+      <option name="closed" value="true" />
+      <created>1746514131861</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1746514131861</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -604,10 +602,10 @@
     <MESSAGE value="update name" />
     <MESSAGE value="update country model" />
     <MESSAGE value="update  model" />
-    <MESSAGE value="update" />
     <MESSAGE value="add statistic get cargo using driver and where_where_to locations" />
     <MESSAGE value="add chats app" />
-    <option name="LAST_COMMIT_MESSAGE" value="add chats app" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Cargo$currency_service.coverage" NAME="currency_service Coverage Results" MODIFIED="1745343933339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api/base" />

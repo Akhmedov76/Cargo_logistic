@@ -31,19 +31,19 @@ services:
       - ./.env
 
   daphne:
-    #    environment:
-    #      - DJANGO_SETTINGS_MODULE=conf.settings
-    restart: unless-stopped
-    image: python:3.11
+    build:
+      context: .
+      dockerfile: Dockerfile
     command: daphne conf.asgi:application -b 0.0.0.0 -p 7009
-    links:
-      - redis
-    #    networks:
-    #      - redisnet
     ports:
       - "7009:7009"
+    volumes:
+      - .:/app
     env_file:
-      - ./.env
+      - .env
+    depends_on:
+      - db
+      - redis
 
 volumes:
   postgres_data:
