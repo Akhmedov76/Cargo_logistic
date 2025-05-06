@@ -86,6 +86,14 @@ class DeliveryForDrivers(TimeModelMixin, models.Model):
 
     contact = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
+    @property
+    def distance_km(self):
+        if self.where and self.where_to and self.where.coordinates and self.where_to.coordinates:
+            loading_coords = tuple(map(float, self.where.coordinates.split(',')))
+            unloading_coords = tuple(map(float, self.where_to.coordinates.split(',')))
+            return geodesic(loading_coords, unloading_coords).km
+        return None
+
     def __str__(self):
         return f"{self.contact} - {self.where} to {self.where_to}"
 

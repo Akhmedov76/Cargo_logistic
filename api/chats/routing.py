@@ -1,4 +1,3 @@
-# your_app/routing.py
 from django.urls import re_path
 from api.chats import consumers
 
