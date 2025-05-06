@@ -1,4 +1,12 @@
 services:
+  redis:
+    image: redis
+    ports:
+      - "6378:6379"
+    restart: always
+  #    networks:
+  #      - redisnet
+
   db:
     image: postgis/postgis:15-3.3
     env_file:
@@ -21,6 +29,21 @@ services:
       - db
     env_file:
       - ./.env
+
+  daphne:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: daphne conf.asgi:application -b 0.0.0.0 -p 7009
+    ports:
+      - "7009:7009"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
 
 volumes:
   postgres_data:

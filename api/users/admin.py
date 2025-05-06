@@ -7,8 +7,8 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 @admin.register(User)
 class CustomUserAdmin(BaseUserAdmin):
-    list_display = (
-    'id', 'username', 'email', 'role', 'phone_number', 'is_staff', 'is_active', 'created_at', 'last_login')
+    list_display = ( 'id',
+        'username', 'email', 'role', 'phone_number', 'is_staff', 'is_active', 'created_at', 'last_login')
     list_filter = ('role', 'is_active', 'is_staff')
     search_fields = ('username', 'email', 'phone_number',)
     ordering = ('username',)
@@ -17,7 +17,8 @@ class CustomUserAdmin(BaseUserAdmin):
             'fields': ('username', 'password')
         }),
         ('Personal info', {
-            'fields': ('first_name', 'last_name', 'email', 'phone_number',)
+            'fields': ('first_name', 'last_name', 'email', 'phone_number', 'passport_serial', 'passport_number',
+                       'drivers_license_serial_number',)
         }),
         ('Permissions', {
             'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')

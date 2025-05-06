@@ -12,16 +12,26 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'role', 'phone_number', 'email', 'created_at', 'updated_at']
 
 
-class UserCreateSerializer(serializers.ModelSerializer):
+class UserCreateSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
     role = serializers.ChoiceField(choices=User.ROLE_CHOICES, required=True)
     phone_number = serializers.CharField(required=True, help_text="e.g. +998901234567")
     email = serializers.EmailField(required=True)
+    passport_serial = serializers.CharField(required=True)
+    passport_number = serializers.CharField(required=True)
+    date_given = serializers.DateField(required=True)
+    given_by_whom = serializers.CharField(required=True)
+    passport_file = serializers.FileField(required=False)
+    drivers_license_serial_number = serializers.CharField(required=True)
+    date_of_issue_license = serializers.DateField(required=True)
+    drivers_license_file = serializers.FileField(required=False)
 
     class Meta:
         model = User
-        fields = ['username', 'password', 'role', 'phone_number', 'email', ]
+        fields = ['id', 'username', 'password', 'role', 'phone_number', 'email', 'passport_serial', 'passport_number',
+                  'date_given', 'given_by_whom', 'passport_file', 'drivers_license_serial_number',
+                  'date_of_issue_license', 'drivers_license_file']
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)
