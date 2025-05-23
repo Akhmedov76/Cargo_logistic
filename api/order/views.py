@@ -249,10 +249,17 @@ class DeliveryOrderView(viewsets.GenericViewSet, viewsets.mixins.ListModelMixin)
 
         driver = driver_queryset.first()
 
+        if not driver:
+            return Response({
+                "message": f"No drivers found going from {where} to {where_to}"
+            }, status=status.HTTP_404_NOT_FOUND)
+
         get_cargo = get_locations_driver(driver)
 
         if not get_cargo:
-            return Response({"message": "No matching cargo found."}, status=status.HTTP_404_NOT_FOUND)
+            return Response({
+                "message": "No matching cargo found."
+            }, status=status.HTTP_404_NOT_FOUND)
 
         datas = [
             {
