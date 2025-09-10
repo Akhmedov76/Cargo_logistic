@@ -18,12 +18,10 @@ RUN apt-get update && apt-get install -y \
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
 
-# 3. Fayllarni ko‘chirish va kutubxonalarni o‘rnatish
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# 4. Ilovani ko‘chirish
 COPY . .
 
 EXPOSE 8000
