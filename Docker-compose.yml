@@ -11,6 +11,11 @@ services:
     image: postgis/postgis:15-3.3
     env_file:
       - ./.env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      TZ: Asia/Tashkent
     ports:
       - "5432:5432"
     volumes:
@@ -24,11 +29,13 @@ services:
     volumes:
       - .:/app
     ports:
-      - "8000:8000"
+      - "8002:8000"
     depends_on:
       - db
     env_file:
       - ./.env
+    environment:
+      TZ: Asia/Tashkent
 
   daphne:
     build:
