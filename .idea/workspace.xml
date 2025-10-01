@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,15 +170,7 @@
       <workItem from="1757650440866" duration="2613000" />
       <workItem from="1758187652452" duration="720000" />
       <workItem from="1758735929928" duration="896000" />
-      <workItem from="1759290574766" duration="4221000" />
-    </task>
-    <task id="LOCAL-00043" summary="update currency_service.py">
-      <option name="closed" value="true" />
-      <created>1745406022722</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1745406022722</updated>
+      <workItem from="1759290574766" duration="4291000" />
     </task>
     <task id="LOCAL-00044" summary="add currens method">
       <option name="closed" value="true" />
@@ -564,7 +556,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759299223343</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="update">
+      <option name="closed" value="true" />
+      <created>1759299381191</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1759299381191</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
