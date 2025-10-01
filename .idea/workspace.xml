@@ -6,24 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7cfe924c-ea63-4cab-92f6-30b67d7d9e7e" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/cargo_base/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/chats/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/chats/migrations/0002_chat_updated_at_contact_updated_at_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/country/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/migrations/0002_addcargo_when_to.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/migrations/0003_alter_deliveryfordrivers_volume.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/migrations/0004_alter_addcargo_volume.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/migrations/0005_alter_addcargo_volume.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/migrations/0006_alter_addcargo_when_to.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/migrations/0007_addcargo_loading_body.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/migrations/0008_alter_deliveryfordrivers_volume.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/order/migrations/0009_deliveryfordrivers_services.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/services/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/users/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/users/migrations/0002_user_date_given_user_date_of_issue_license_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/users/migrations/0003_alter_user_passport_number_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,23 +161,16 @@
       <workItem from="1757424724370" duration="1512000" />
       <workItem from="1757427589645" duration="7000" />
       <workItem from="1757427609366" duration="14000" />
-      <workItem from="1757482994913" duration="4524000" />
-    </task>
-    <task id="LOCAL-00039" summary="update views for user">
-      <option name="closed" value="true" />
-      <created>1745323931199</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1745323931199</updated>
-    </task>
-    <task id="LOCAL-00040" summary="update">
-      <option name="closed" value="true" />
-      <created>1745325965876</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1745325965876</updated>
+      <workItem from="1757482994913" duration="5753000" />
+      <workItem from="1757495104584" duration="24000" />
+      <workItem from="1757496378124" duration="13000" />
+      <workItem from="1757584314300" duration="38000" />
+      <workItem from="1757586274495" duration="1502000" />
+      <workItem from="1757592554149" duration="4000" />
+      <workItem from="1757650440866" duration="2613000" />
+      <workItem from="1758187652452" duration="720000" />
+      <workItem from="1758735929928" duration="896000" />
+      <workItem from="1759290574766" duration="776000" />
     </task>
     <task id="LOCAL-00041" summary="create currency_service.py">
       <option name="closed" value="true" />
@@ -572,7 +548,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757483460658</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="update">
+      <option name="closed" value="true" />
+      <created>1757487576120</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1757487576121</updated>
+    </task>
+    <task id="LOCAL-00089" summary="update">
+      <option name="closed" value="true" />
+      <created>1757487593794</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1757487593794</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
