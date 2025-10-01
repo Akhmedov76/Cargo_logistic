@@ -24,7 +24,9 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 COPY . .
 
-EXPOSE 8000
+# entrypoint.sh ni containerga ko'chirish va ishga tushirishga ruxsat berish
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["daphne", "conf.asgi:application", "-b", "0.0.0.0", "-p", "7009"]
-
+EXPOSE 8000 7009
